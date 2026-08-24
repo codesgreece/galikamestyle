@@ -69,7 +69,7 @@ export function Navigation() {
                   e.preventDefault();
                   go(link.href);
                 }}
-                className="focus-ring text-[0.78rem] uppercase tracking-[0.18em] text-cream/90 transition hover:text-gold"
+                className="focus-ring text-[0.78rem] uppercase tracking-[0.18em] text-[#efe8dc] transition hover:text-gold"
               >
                 {link.label}
               </a>
@@ -117,10 +117,10 @@ export function Navigation() {
                       e.preventDefault();
                       go(link.href);
                     }}
-                    className="font-display block border-b border-cream/10 py-4 text-4xl text-cream sm:text-5xl"
-                    initial={{ opacity: 0, y: 24 }}
+                    className="font-display block border-b border-cream/15 py-4 text-4xl text-[#f6f1e8] sm:text-5xl"
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.05 * i, duration: 0.45 }}
+                    transition={{ delay: 0.06 * i, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   >
                     {link.label}
                   </motion.a>
