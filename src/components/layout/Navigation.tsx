@@ -69,7 +69,7 @@ export function Navigation() {
                   e.preventDefault();
                   go(link.href);
                 }}
-                className="focus-ring text-[0.78rem] uppercase tracking-[0.18em] text-cream/70 transition hover:text-cream"
+                className="focus-ring text-[0.78rem] uppercase tracking-[0.18em] text-cream/90 transition hover:text-gold"
               >
                 {link.label}
               </a>

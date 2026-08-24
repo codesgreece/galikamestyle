@@ -49,7 +49,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 6rem;
 }
 
 body {
@@ -108,10 +108,19 @@ select {
 }
 
 .gradient-text {
-  background: linear-gradient(120deg, var(--cream) 10%, var(--gold-soft) 45%, var(--cream) 80%);
+  background: linear-gradient(
+    115deg,
+    #f6f1e8 8%,
+    #d8c09a 32%,
+    #c4a574 48%,
+    #f6f1e8 72%,
+    #d8c09a 100%
+  );
+  background-size: 180% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: shimmer 10s ease-in-out infinite alternate;
 }
 
 .gold-rule {

@@ -51,7 +51,7 @@ export function Certificates() {
           />
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-2">
+        <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:items-start">
           <CertGroup title="Πιστοποιήσεις Γερμανικών" items={germanCerts} tone="dark" />
           <CertGroup title="Πιστοποιήσεις Αγγλικών" items={englishCerts} tone="light" />
         </div>
