@@ -75,7 +75,7 @@ export function FitQuiz() {
           <DropWords text="Ποιο μάθημα σου ταιριάζει;" />
         </h2>
 
-        <div className="section-stack mx-auto max-w-2xl rounded-[2rem] border-[3px] border-ink bg-paper p-5 shadow-[8px_8px_0_#1a1433] sm:p-6 lg:p-6">
+        <div className="section-stack mx-auto max-w-2xl rounded-[1.5rem] border-[3px] border-ink bg-paper p-4 shadow-[6px_6px_0_#1a1433]">
           <div className="mb-6 flex gap-2">
             {steps.map((_, i) => (
               <span
@@ -96,16 +96,16 @@ export function FitQuiz() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
               >
-                <p className="font-display text-[1.65rem] leading-snug md:text-2xl">
+                <p className="font-display text-[1.35rem] leading-snug md:text-xl">
                   {steps[step].question}
                 </p>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   {steps[step].options.map((opt) => (
                     <button
                       key={opt.value}
                       type="button"
                       onClick={() => select(steps[step].key, opt.value)}
-                      className="focus-ring rounded-2xl border-[3px] border-ink bg-cream px-4 py-4 text-left text-base font-bold shadow-[4px_4px_0_#1a1433] transition hover:bg-yellow"
+                      className="focus-ring rounded-2xl border-[3px] border-ink bg-cream px-3 py-2.5 text-left text-sm font-bold shadow-[3px_3px_0_#1a1433] transition hover:bg-yellow"
                     >
                       {opt.label}
                     </button>

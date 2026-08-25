@@ -44,15 +44,15 @@ export function MiniGame() {
         </h2>
 
         <div className="section-stack relative mx-auto max-w-xl">
-          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-5 md:p-5">
+          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-4 md:p-4">
             <ConfettiBurst show={status === "correct"} />
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
               {question.lang === "de" ? "Γερμανικά" : "Αγγλικά"} → Ελληνικά
             </p>
-            <p className="font-display mt-3 text-4xl tracking-wide md:text-3xl">
+            <p className="font-display mt-2 text-2xl tracking-wide md:text-[1.65rem]">
               {question.word}
             </p>
-            <div className="mt-5 grid gap-3">
+            <div className="mt-3 grid gap-2 md:grid-cols-3">
               {options.map((option) => {
                 const isPicked = picked === option;
                 const isAnswer = option === question.answer;
@@ -62,7 +62,7 @@ export function MiniGame() {
                     type="button"
                     onClick={() => onPick(option)}
                     className={cn(
-                      "focus-ring rounded-2xl border-[3px] border-ink px-4 py-3.5 text-left text-base font-bold transition md:py-2.5",
+                      "focus-ring rounded-2xl border-[3px] border-ink px-3 py-2.5 text-left text-sm font-bold transition md:text-center",
                       status === "idle" && "bg-cream hover:bg-yellow",
                       status !== "idle" && isAnswer && "bg-green text-ink",
                       status === "wrong" &&
@@ -81,10 +81,10 @@ export function MiniGame() {
               })}
             </div>
 
-            <div className="mt-6 min-h-[3rem]">
+            <div className="mt-3 flex flex-wrap items-center gap-3">
               {status === "correct" ? (
                 <motion.p
-                  className="font-display text-2xl text-green"
+                  className="font-display text-lg text-green"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                 >
@@ -92,19 +92,19 @@ export function MiniGame() {
                 </motion.p>
               ) : null}
               {status === "wrong" ? (
-                <p className="font-display text-2xl text-coral">
+                <p className="font-display text-lg text-coral">
                   😄 Σχεδόν! Ξαναδοκίμασε.
                 </p>
               ) : null}
-            </div>
 
             <button
               type="button"
               onClick={next}
-              className="focus-ring mt-2 rounded-full border-2 border-ink bg-yellow px-4 py-2 text-sm font-extrabold"
+              className="focus-ring rounded-full border-2 border-ink bg-yellow px-4 py-1.5 text-sm font-extrabold"
             >
               Επόμενη λέξη →
             </button>
+            </div>
           </div>
         </div>
       </div>

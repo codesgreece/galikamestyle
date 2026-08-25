@@ -91,13 +91,13 @@ export function LevelTest() {
           <DropWords text="Δεν ξέρεις από πού να ξεκινήσεις;" />
         </h2>
         <Reveal delay={0.08}>
-          <p className="mt-3 max-w-xl text-cream/70 sm:mt-4">
+          <p className="mt-2 max-w-xl text-sm text-cream/70 md:hidden">
             Κάνε το 60-second Language Test. Χωρίς άγχος. Δεν κρατάμε βαθμούς.
             Ακόμα. 😏
           </p>
         </Reveal>
 
-        <div className="section-stack mx-auto max-w-2xl rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#3d8bff] sm:p-7 lg:p-6">
+        <div className="section-stack mx-auto max-w-2xl rounded-[1.5rem] border-[3px] border-ink bg-cream p-4 text-ink shadow-[6px_6px_0_#3d8bff]">
           <AnimatePresence mode="wait">
             {phase === "intro" ? (
               <motion.div
@@ -151,11 +151,11 @@ export function LevelTest() {
                   />
                 </div>
 
-                <p className="font-display text-[1.45rem] leading-snug sm:text-3xl">
+                <p className="font-display text-[1.25rem] leading-snug md:text-xl">
                   {current.prompt}
                 </p>
 
-                <div className="mt-6 grid gap-3">
+                <div className="mt-3 grid gap-2">
                   {current.options.map((option) => (
                     <button
                       key={option}
@@ -163,7 +163,7 @@ export function LevelTest() {
                       disabled={locked}
                       onClick={() => answer(option)}
                       className={cn(
-                        "focus-ring rounded-2xl border-[3px] border-ink px-4 py-4 text-left text-base font-bold transition sm:py-5",
+                        "focus-ring rounded-2xl border-[3px] border-ink px-3 py-2.5 text-left text-sm font-bold transition md:py-2.5",
                         feedback && option === current.answer
                           ? "bg-green"
                           : feedback && option !== current.answer
@@ -255,7 +255,7 @@ function LangStartButton({
       type="button"
       onClick={onClick}
       className={cn(
-        "focus-ring rounded-2xl border-[3px] border-ink px-4 py-5 text-left text-lg font-extrabold shadow-[4px_4px_0_#1a1433]",
+        "focus-ring rounded-2xl border-[3px] border-ink px-4 py-3 text-left text-base font-extrabold shadow-[4px_4px_0_#1a1433]",
         tone,
       )}
     >

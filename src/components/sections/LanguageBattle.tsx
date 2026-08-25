@@ -99,16 +99,15 @@ export function LanguageBattle() {
             <span className="text-blue">ENGLISH</span>
           </span>
         </h2>
-        <Reveal delay={0.08}>
-          <p className="mt-3 max-w-xl text-ink/70">
+        <div className="mt-3 flex flex-wrap items-center justify-between gap-3 md:mt-2">
+          <p className="max-w-xl text-sm text-ink/70 md:text-sm">
             <DropWords text="Ποια γλώσσα θα σου βάλει πιο δύσκολα;" />
           </p>
-        </Reveal>
-
-        <div className="mt-6 flex items-center justify-center gap-4 sm:mt-8 sm:gap-8">
+          <div className="flex items-center gap-2">
           <ScorePill side="GERMAN" score={germanScore} tone="bg-coral text-paper" />
-          <span className="font-display text-xl text-ink/35">VS</span>
+          <span className="font-display text-sm text-ink/35">VS</span>
           <ScorePill side="ENGLISH" score={englishScore} tone="bg-blue text-paper" />
+          </div>
         </div>
 
         <div className="section-stack mx-auto max-w-3xl">
@@ -116,7 +115,7 @@ export function LanguageBattle() {
             {!finished && round ? (
               <motion.div
                 key={round.id}
-                className="rounded-[1.75rem] border-[3px] border-ink bg-paper p-5 shadow-[8px_8px_0_#1a1433] sm:p-6"
+                className="rounded-[1.5rem] border-[3px] border-ink bg-paper p-4 shadow-[6px_6px_0_#1a1433]"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -124,11 +123,11 @@ export function LanguageBattle() {
                 <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
                   {round.title}
                 </p>
-                <p className="font-display mt-3 text-2xl sm:text-3xl">
+                <p className="font-display mt-1.5 text-lg leading-snug md:text-xl">
                   {round.prompt}
                 </p>
 
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
                   <BattleChoice
                     side="german"
                     label={round.german.label}
@@ -150,7 +149,7 @@ export function LanguageBattle() {
                 <AnimatePresence>
                   {picked ? (
                     <motion.div
-                      className="mt-6 rounded-2xl border-2 border-ink bg-yellow/80 p-4"
+                      className="mt-3 rounded-2xl border-2 border-ink bg-yellow/80 p-3"
                       initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
                     >
@@ -158,7 +157,7 @@ export function LanguageBattle() {
                         {round.explanations[picked]}
                       </p>
                       <Button
-                        className="mt-4"
+                        className="mt-3"
                         variant="primary"
                         onClick={goNextRound}
                       >
@@ -250,12 +249,12 @@ function ScorePill({
   return (
     <div
       className={cn(
-        "min-w-[7.5rem] rounded-2xl border-[3px] border-ink px-4 py-3 text-center shadow-[4px_4px_0_#1a1433]",
+        "min-w-[5.5rem] rounded-xl border-[3px] border-ink px-3 py-1.5 text-center shadow-[3px_3px_0_#1a1433]",
         tone,
       )}
     >
       <p className="text-[0.65rem] font-extrabold tracking-[0.16em]">{side}</p>
-      <p className="font-display mt-1 text-3xl">{score}</p>
+      <p className="font-display mt-0.5 text-xl leading-none">{score}</p>
     </div>
   );
 }
@@ -282,7 +281,7 @@ function BattleChoice({
       disabled={disabled && !active}
       aria-pressed={active}
       className={cn(
-        "focus-ring min-h-[7.5rem] rounded-[1.5rem] border-[3px] border-ink p-5 text-left transition",
+        "focus-ring rounded-2xl border-[3px] border-ink p-3 text-left transition",
         side === "german" ? "bg-coral/15" : "bg-blue/15",
         active &&
           (side === "german" ? "bg-coral text-paper" : "bg-blue text-paper"),
@@ -292,10 +291,10 @@ function BattleChoice({
       <p className="text-xs font-extrabold uppercase tracking-[0.16em]">
         {side === "german" ? "🇩🇪 German Team" : "🇬🇧 English Team"}
       </p>
-      <p className="font-display mt-3 text-2xl leading-tight sm:text-3xl">
+      <p className="font-display mt-1 text-lg leading-tight md:text-xl">
         {label}
       </p>
-      {detail ? <p className="mt-2 text-sm opacity-80">{detail}</p> : null}
+      {detail ? <p className="mt-1 text-xs opacity-80">{detail}</p> : null}
     </button>
   );
 }
