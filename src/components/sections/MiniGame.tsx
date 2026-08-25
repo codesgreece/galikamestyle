@@ -4,11 +4,11 @@ import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { ConfettiBurst } from "@/components/ui/PlayfulFX";
-import { pickRandomQuestion } from "@/data/game";
+import { miniGameQuestions, pickRandomQuestion } from "@/data/game";
 import { cn } from "@/lib/utils";
 
 export function MiniGame() {
-  const [question, setQuestion] = useState(() => pickRandomQuestion());
+  const [question, setQuestion] = useState(miniGameQuestions[0]);
   const [status, setStatus] = useState<"idle" | "correct" | "wrong">("idle");
   const [picked, setPicked] = useState<string | null>(null);
 
@@ -65,8 +65,14 @@ export function MiniGame() {
                       "focus-ring rounded-2xl border-[3px] border-ink px-4 py-4 text-left text-lg font-bold transition",
                       status === "idle" && "bg-cream hover:bg-yellow",
                       status !== "idle" && isAnswer && "bg-green text-ink",
-                      status === "wrong" && isPicked && !isAnswer && "bg-coral text-paper",
-                      status !== "idle" && !isAnswer && !isPicked && "bg-cream opacity-60",
+                      status === "wrong" &&
+                        isPicked &&
+                        !isAnswer &&
+                        "bg-coral text-paper",
+                      status !== "idle" &&
+                        !isAnswer &&
+                        !isPicked &&
+                        "bg-cream opacity-60",
                     )}
                   >
                     {option}
