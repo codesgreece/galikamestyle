@@ -133,7 +133,7 @@ export function Hero() {
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.85rem,7.4vw,5.2rem)] leading-[1.28] tracking-[-0.015em] sm:leading-[1.16]">
+        <h1 className="font-display text-[clamp(1.7rem,6.6vw,5.2rem)] leading-[1.32] tracking-[-0.01em] sm:text-[clamp(2.2rem,5vw,5.2rem)] sm:leading-[1.16]">
           <span className="block whitespace-nowrap py-0.5 sm:py-1">
             Μάθε Γερμανικά.
           </span>
