@@ -128,19 +128,19 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.5rem] sm:gap-9 sm:justify-center sm:pb-24 sm:pt-32 md:gap-11 md:py-36">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-9 pb-20 pt-[7.75rem] sm:gap-10 sm:justify-center sm:pb-24 sm:pt-32 md:gap-12 md:py-36">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.7rem,6.6vw,5.2rem)] leading-[1.32] tracking-[-0.01em] sm:text-[clamp(2.2rem,5vw,5.2rem)] sm:leading-[1.16]">
-          <span className="block whitespace-nowrap py-0.5 sm:py-1">
+        <h1 className="font-display text-[clamp(1.65rem,6.4vw,5.2rem)] tracking-[-0.01em] sm:text-[clamp(2.2rem,5vw,5.2rem)]">
+          <span className="mb-3 block whitespace-nowrap sm:mb-2">
             Μάθε Γερμανικά.
           </span>
-          <span className="block whitespace-nowrap py-0.5 sm:py-1">
+          <span className="mb-5 block whitespace-nowrap sm:mb-3">
             Μάθε Αγγλικά.
           </span>
-          <span className="mt-5 block sm:mt-6">
+          <span className="block">
             Και κάν’ το με{" "}
             <button
               type="button"
