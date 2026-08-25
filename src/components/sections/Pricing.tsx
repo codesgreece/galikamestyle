@@ -24,7 +24,7 @@ export function Pricing() {
           <p className="mt-3 text-ink/65 sm:mt-4">Ποιο είναι το δικό σου στυλ;</p>
         </Reveal>
 
-        <div className="section-stack grid gap-5 lg:grid-cols-2 lg:gap-6">
+        <div className="section-stack grid gap-4 md:grid-cols-2 md:gap-4">
           <motion.article
             className="group relative overflow-hidden rounded-[2rem] border-[3px] border-ink bg-navy p-6 text-cream shadow-[8px_8px_0_#ff5d7a] md:p-7"
             whileHover={{ y: -6 }}

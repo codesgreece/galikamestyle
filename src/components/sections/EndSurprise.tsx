@@ -8,10 +8,10 @@ export function EndSurprise() {
   const inView = useInView(ref, { once: true, amount: 0.6 });
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-cream py-16 sm:py-20 lg:py-16">
+    <section ref={ref} className="relative overflow-hidden bg-cream py-10 md:py-8">
       <div className="container-shell text-center">
         <motion.blockquote
-          className="font-display mx-auto max-w-3xl text-[clamp(1.6rem,4vw,2.35rem)] leading-[1.2]"
+          className="font-display mx-auto max-w-3xl text-[clamp(1.6rem,4vw,1.85rem)] leading-[1.25]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

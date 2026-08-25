@@ -34,14 +34,18 @@ export default function HomePage() {
           <Hero />
           <GoalJourney />
           <LanguageSelect />
-          <LevelTest />
+          <div className="desktop-pair">
+            <LevelTest />
+            <MiniGame />
+          </div>
           <Levels />
-          <MiniGame />
-          <LanguageBattle />
+          <div className="desktop-pair">
+            <LanguageBattle />
+            <FitQuiz />
+          </div>
           <About />
           <ExamPrep />
           <Pricing />
-          <FitQuiz />
           <Contact />
           <EndSurprise />
           <Social />

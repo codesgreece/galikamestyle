@@ -44,15 +44,15 @@ export function MiniGame() {
         </h2>
 
         <div className="section-stack relative mx-auto max-w-xl">
-          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-6 sm:p-7 lg:p-6">
+          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-5 md:p-5">
             <ConfettiBurst show={status === "correct"} />
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
               {question.lang === "de" ? "Γερμανικά" : "Αγγλικά"} → Ελληνικά
             </p>
-            <p className="font-display mt-3 text-4xl tracking-wide sm:mt-4 sm:text-5xl lg:text-5xl">
+            <p className="font-display mt-3 text-4xl tracking-wide md:text-3xl">
               {question.word}
             </p>
-            <div className="mt-8 grid gap-3">
+            <div className="mt-5 grid gap-3">
               {options.map((option) => {
                 const isPicked = picked === option;
                 const isAnswer = option === question.answer;
@@ -62,7 +62,7 @@ export function MiniGame() {
                     type="button"
                     onClick={() => onPick(option)}
                     className={cn(
-                      "focus-ring rounded-2xl border-[3px] border-ink px-4 py-4 text-left text-lg font-bold transition",
+                      "focus-ring rounded-2xl border-[3px] border-ink px-4 py-3.5 text-left text-base font-bold transition md:py-2.5",
                       status === "idle" && "bg-cream hover:bg-yellow",
                       status !== "idle" && isAnswer && "bg-green text-ink",
                       status === "wrong" &&

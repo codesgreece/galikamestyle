@@ -30,7 +30,7 @@ export function ExamPrep() {
           </p>
         </Reveal>
 
-        <div className="section-stack grid gap-4 sm:grid-cols-2 lg:grid-cols-5 lg:gap-3">
+        <div className="section-stack grid gap-4 sm:grid-cols-2 md:grid-cols-5 md:gap-3">
           {exams.map((exam, i) => (
             <motion.article
               key={exam.name}

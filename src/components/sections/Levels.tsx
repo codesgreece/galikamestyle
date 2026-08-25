@@ -37,15 +37,15 @@ export function Levels() {
         </Reveal>
 
         <div ref={ref} className="section-stack relative">
-          <div className="absolute left-6 top-4 bottom-4 w-1 rounded-full bg-cream/15 lg:hidden" />
+          <div className="absolute left-6 top-4 bottom-4 w-1 rounded-full bg-cream/15 md:hidden" />
           <motion.div
-            className="absolute left-6 top-4 w-1 origin-top rounded-full bg-yellow lg:hidden"
+            className="absolute left-6 top-4 w-1 origin-top rounded-full bg-yellow md:hidden"
             initial={{ scaleY: 0 }}
             animate={inView ? { scaleY: (active + 1) / levels.length } : { scaleY: 0 }}
             style={{ height: "calc(100% - 2rem)" }}
             transition={{ duration: 0.5 }}
           />
-          <div className="mb-4 hidden h-1.5 overflow-hidden rounded-full bg-cream/15 lg:block">
+          <div className="mb-3 hidden h-1.5 overflow-hidden rounded-full bg-cream/15 md:block">
             <motion.div
               className="h-full origin-left rounded-full bg-yellow"
               initial={{ scaleX: 0 }}
@@ -54,7 +54,7 @@ export function Levels() {
             />
           </div>
 
-          <div className="space-y-5 lg:grid lg:grid-cols-5 lg:gap-3 lg:space-y-0">
+          <div className="space-y-5 md:grid md:grid-cols-5 md:gap-3 md:space-y-0">
             {levels.map((level, i) => {
               const unlocked = inView && i <= active;
               return (
@@ -63,8 +63,8 @@ export function Levels() {
                   type="button"
                   onClick={() => setActive(i)}
                   className={cn(
-                    "relative ml-12 block w-[calc(100%-3rem)] rounded-3xl border-[3px] border-ink p-5 text-left transition sm:ml-14 sm:w-[calc(100%-3.5rem)] lg:ml-0 lg:w-full lg:rounded-2xl lg:p-4",
-                    unlocked ? "bg-cream text-ink shadow-[8px_8px_0_#ffe14a] lg:shadow-[5px_5px_0_#ffe14a]" : "bg-navy-soft text-cream/50",
+                    "relative ml-12 block w-[calc(100%-3rem)] rounded-3xl border-[3px] border-ink p-5 text-left transition sm:ml-14 sm:w-[calc(100%-3.5rem)] md:ml-0 md:w-full md:rounded-2xl md:p-3",
+                    unlocked ? "bg-cream text-ink shadow-[8px_8px_0_#ffe14a] md:shadow-[4px_4px_0_#ffe14a]" : "bg-navy-soft text-cream/50",
                   )}
                   initial={{ opacity: 0, x: -24 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -73,24 +73,24 @@ export function Levels() {
                 >
                   <span
                     className={cn(
-                      "absolute -left-[2.85rem] top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-ink text-xs font-extrabold text-ink lg:hidden",
+                      "absolute -left-[2.85rem] top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border-[3px] border-ink text-xs font-extrabold text-ink md:hidden",
                       unlocked ? level.color : "bg-cream/20 text-cream",
                     )}
                   >
                     {unlocked ? "✓" : i + 1}
                   </span>
-                  <div className="flex items-center gap-3 lg:flex-col lg:items-start lg:gap-2">
-                    <span className={cn("rounded-xl px-3 py-1 font-display text-2xl text-ink lg:text-xl", level.color)}>
+                  <div className="flex items-center gap-3 md:flex-col md:items-start md:gap-2">
+                    <span className={cn("rounded-xl px-3 py-1 font-display text-2xl text-ink md:text-lg", level.color)}>
                       {level.code}
                     </span>
-                    <p className="font-bold lg:text-sm lg:leading-snug">{level.line}</p>
+                    <p className="font-bold md:text-xs md:leading-snug">{level.line}</p>
                   </div>
                 </motion.button>
               );
             })}
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-2 lg:hidden">
+          <div className="mt-6 flex flex-wrap gap-2 md:hidden">
             {levels.map((level, i) => (
               <button
                 key={level.code}

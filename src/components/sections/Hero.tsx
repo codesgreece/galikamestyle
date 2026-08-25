@@ -75,7 +75,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-cream lg:min-h-[min(100svh,44rem)]"
+      className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-cream md:min-h-0"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
         mx.set(((e.clientX - r.left) / r.width - 0.5) * 24);
@@ -128,14 +128,15 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] sm:justify-center sm:gap-7 sm:py-24 lg:min-h-[min(100svh,44rem)] lg:gap-5 lg:py-16">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] md:min-h-0 md:grid md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-8 md:py-12 md:pt-24 lg:gap-12 lg:py-14 lg:pt-24">
+        <div className="flex flex-col gap-6 md:gap-4">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal sm:text-[clamp(2.25rem,4.2vw,3.5rem)]">
-          <span className="mb-3.5 block sm:mb-2.5">Μάθε Γερμανικά.</span>
-          <span className="mb-6 block sm:mb-4">Μάθε Αγγλικά.</span>
+        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal md:text-[clamp(2.1rem,3.1vw,2.75rem)]">
+          <span className="mb-3.5 block md:mb-1">Μάθε Γερμανικά.</span>
+          <span className="mb-6 block md:mb-1">Μάθε Αγγλικά.</span>
           <span className="block">
             Και κάν’ το με{" "}
             <button
@@ -162,7 +163,7 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="max-w-xl text-[1.05rem] leading-8 text-cream/80 sm:text-lg sm:leading-8">
+        <p className="max-w-xl text-[1.05rem] leading-8 text-cream/80 md:text-base md:leading-7">
           Εδώ δεν θα βαρεθείς να μάθεις γλώσσες. Μαθήματα για παιδιά από 10+ και
           εφήβους — με πραγματική πρόοδο και λίγο χιούμορ.
         </p>
@@ -170,21 +171,22 @@ export function Hero() {
         <div className="flex flex-col gap-4 sm:flex-row sm:gap-4">
           <Button
             variant="coral"
-            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
             onClick={() => scrollToId("goal")}
           >
             Πάμε να γνωριστούμε →
           </Button>
           <Button
             variant="yellow"
-            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
             onClick={() => scrollToId("level-test")}
           >
             Ποιο είναι το δικό σου στυλ;
           </Button>
         </div>
+        </div>
 
-        <div className="mt-2 max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] sm:mt-0 sm:p-6">
+        <div className="max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] md:max-w-none md:p-5">
           <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.18em] text-muted">
             Διάλεξε μια λέξη
           </p>

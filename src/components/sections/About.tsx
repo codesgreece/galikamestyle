@@ -16,11 +16,11 @@ export function About() {
   return (
     <section id="about" className="relative bg-paper">
       <div className="container-shell section-pad">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10">
+        <div className="grid items-center gap-8 md:grid-cols-[13rem_1fr] md:gap-8 lg:grid-cols-[14rem_1fr]">
           <Reveal>
-            <div className="relative mx-auto max-w-md lg:max-w-[19rem]">
+            <div className="relative mx-auto max-w-md md:max-w-none">
               <div className="pop-card overflow-hidden rounded-[2rem] border-[3px] border-ink bg-white shadow-[8px_8px_0_#1a1433]">
-                <div className="relative aspect-[4/5] bg-white lg:aspect-auto lg:h-[22rem]">
+                <div className="relative aspect-[4/5] bg-white md:aspect-auto md:h-[16.5rem]">
                   <Image
                     src="/images/virginia-panaki.png"
                     alt={`${siteConfig.teacher} — καθηγήτρια Γερμανικών και Αγγλικών`}
@@ -34,7 +34,7 @@ export function About() {
                       <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
                         Meet Virginia
                       </p>
-                      <p className="font-display mt-1 text-3xl lg:text-xl">{siteConfig.teacher}</p>
+                      <p className="font-display mt-1 text-3xl md:text-lg">{siteConfig.teacher}</p>
                       <p className="mt-1 text-sm text-ink/65 lg:text-xs">
                         Γερμανικά & Αγγλικά με ρυθμό και στυλ.
                       </p>
@@ -71,7 +71,7 @@ export function About() {
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:mt-6">
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               <InfoCard title="🎓 Γερμανικά" text="ÖSD • ΚΠΓ • Goethe C2" tone="bg-yellow" />
               <InfoCard title="🇬🇧 Αγγλικά" text="NOCN C2" tone="bg-blue text-paper" />
               <InfoCard
@@ -98,9 +98,9 @@ function InfoCard({
   tone: string;
 }) {
   return (
-    <div className={`rounded-3xl border-[3px] border-ink p-4 shadow-[5px_5px_0_#1a1433] lg:p-4 ${tone}`}>
-      <p className="font-display text-xl">{title}</p>
-      <p className="mt-2 text-sm font-medium opacity-90">{text}</p>
+    <div className={`rounded-2xl border-[3px] border-ink p-3 shadow-[4px_4px_0_#1a1433] md:p-3 ${tone}`}>
+      <p className="font-display text-lg md:text-base">{title}</p>
+      <p className="mt-1 text-sm font-medium opacity-90">{text}</p>
     </div>
   );
 }

@@ -106,7 +106,7 @@ export function Contact() {
           </Button>
         </Reveal>
 
-        <div className="section-stack grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
+        <div className="section-stack grid gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-3">
           {contacts.map((item, i) => {
             const Icon = item.icon;
             return (

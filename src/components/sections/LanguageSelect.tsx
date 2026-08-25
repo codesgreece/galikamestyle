@@ -51,7 +51,7 @@ export function LanguageSelect() {
           <DropWords text="Ποια γλώσσα θα κατακτήσεις πρώτα;" />
         </h2>
 
-        <div className="section-stack grid gap-5 lg:grid-cols-2 lg:gap-6">
+        <div className="section-stack grid gap-4 md:grid-cols-2 md:gap-4">
           {languages.map((lang) => {
             const isActive = active === lang.id;
             return (
@@ -61,7 +61,7 @@ export function LanguageSelect() {
                 onClick={() => pick(lang.id)}
                 onMouseEnter={() => setActive(lang.id)}
                 className={cn(
-                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left sm:p-7 lg:p-6",
+                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left md:p-5",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 whileTap={{ scale: 0.985 }}
@@ -71,7 +71,7 @@ export function LanguageSelect() {
                     <span className="text-4xl" aria-hidden>
                       {lang.flag}
                     </span>
-                    <h3 className="font-display mt-3 text-3xl leading-tight lg:text-4xl">
+                    <h3 className="font-display mt-3 text-3xl leading-tight md:mt-2 md:text-2xl">
                       {lang.title}
                     </h3>
                     <p

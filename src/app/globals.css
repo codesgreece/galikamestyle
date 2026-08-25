@@ -117,7 +117,7 @@ select {
 }
 
 .section-pad {
-  padding-block: clamp(5rem, 11vw, 8.5rem);
+  padding-block: clamp(4.5rem, 10vw, 6rem);
 }
 
 .section-title {
@@ -132,26 +132,40 @@ select {
 }
 
 @media (min-width: 768px) {
-  .section-title {
-    max-width: 22ch;
-    line-height: 1.12;
-  }
-}
-
-@media (min-width: 1024px) {
   .section-pad {
-    padding-block: 3.25rem;
+    padding-block: 1.35rem;
   }
 
   .section-title {
-    margin-top: 0.5rem;
-    max-width: 28ch;
-    font-size: 2.35rem;
-    line-height: 1.15;
+    margin-top: 0.3rem;
+    max-width: 32ch;
+    font-size: 1.75rem;
+    line-height: 1.2;
   }
 
   .section-stack {
-    margin-top: 1.75rem;
+    margin-top: 0.9rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .desktop-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  .desktop-pair > section {
+    min-width: 0;
+  }
+
+  .desktop-pair .container-shell {
+    width: min(36rem, calc(100% - 2.5rem));
+  }
+
+  .desktop-pair .section-pad {
+    height: 100%;
+    padding-block: 1.25rem;
   }
 }
 

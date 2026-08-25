@@ -33,12 +33,12 @@ export function GoalJourney() {
           <span aria-hidden>👀</span>
         </h2>
         <Reveal delay={0.08}>
-          <p className="mt-3 max-w-xl text-base text-ink/70 sm:mt-4 sm:text-lg">
+          <p className="mt-2 max-w-xl text-base text-ink/70 md:text-sm">
             Διάλεξε τον στόχο σου και πάμε από εκεί.
           </p>
         </Reveal>
 
-        <div className="section-stack grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
+        <div className="section-stack grid gap-4 sm:grid-cols-2 md:grid-cols-4 md:gap-3">
           {goalOptions.map((goal, i) => {
             const isActive = picked === goal.id;
             const dimmed = picked !== null && !isActive;
@@ -49,7 +49,7 @@ export function GoalJourney() {
                 onClick={() => choose(goal.id)}
                 aria-pressed={isActive}
                 className={cn(
-                  "focus-ring rounded-[1.75rem] border-[3px] border-ink p-5 text-left shadow-[6px_6px_0_#1a1433] transition sm:p-6 lg:p-5",
+                  "focus-ring rounded-[1.5rem] border-[3px] border-ink p-4 text-left shadow-[5px_5px_0_#1a1433] transition md:p-3.5",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 initial={reduce ? false : { opacity: 0, y: 18 }}
@@ -71,12 +71,12 @@ export function GoalJourney() {
                 >
                   {goal.emoji} Pick
                 </span>
-                <h3 className="font-display mt-3 text-2xl sm:text-3xl lg:mt-4 lg:text-xl xl:text-2xl">
+                <h3 className="font-display mt-2 text-xl leading-tight md:text-lg">
                   {goal.emoji} {goal.title}
                 </h3>
                 <p
                   className={cn(
-                    "mt-2 text-sm leading-relaxed sm:mt-3 sm:text-base lg:text-sm",
+                    "mt-2 text-sm leading-snug md:text-xs",
                     isActive ? "text-cream/75" : "text-ink/65",
                   )}
                 >

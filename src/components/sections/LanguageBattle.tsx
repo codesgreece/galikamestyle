@@ -90,7 +90,7 @@ export function LanguageBattle() {
             Language battle
           </p>
         </Reveal>
-        <h2 className="section-title font-display text-[clamp(1.85rem,6vw,3.2rem)] sm:text-[clamp(2rem,4.5vw,2.6rem)]">
+        <h2 className="section-title font-display text-[clamp(1.85rem,6vw,3.2rem)] md:text-[1.75rem]">
           <span className="inline-flex flex-col items-start sm:flex-row sm:items-baseline">
             <span className="text-coral">GERMAN</span>
             <span className="mx-0 my-0.5 text-[0.55em] text-ink/30 sm:mx-2 sm:my-0 sm:text-[1em]">
