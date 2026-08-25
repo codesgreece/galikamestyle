@@ -90,10 +90,14 @@ export function LanguageBattle() {
             Language battle
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 text-[clamp(2rem,7vw,4rem)] leading-[1.1]">
-          <span className="text-coral">GERMAN</span>
-          <span className="mx-2 text-ink/30">VS</span>
-          <span className="text-blue">ENGLISH</span>
+        <h2 className="font-display mt-4 text-[clamp(1.85rem,6vw,4rem)] leading-[1.1] sm:text-[clamp(2rem,7vw,4rem)]">
+          <span className="inline-flex flex-col items-start sm:flex-row sm:items-baseline">
+            <span className="text-coral">GERMAN</span>
+            <span className="mx-0 my-0.5 text-[0.55em] text-ink/30 sm:mx-2 sm:my-0 sm:text-[1em]">
+              VS
+            </span>
+            <span className="text-blue">ENGLISH</span>
+          </span>
         </h2>
         <Reveal delay={0.08}>
           <p className="mt-3 max-w-xl text-ink/70">
