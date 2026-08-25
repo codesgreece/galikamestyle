@@ -128,13 +128,13 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] md:min-h-0 md:grid md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-8 md:py-12 md:pt-24 lg:gap-12 lg:py-14 lg:pt-24">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] md:min-h-0 md:grid md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-8 md:py-8 md:pt-20 lg:gap-10 lg:py-10 lg:pt-20">
         <div className="flex flex-col gap-6 md:gap-4">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal md:text-[clamp(2.1rem,3.1vw,2.75rem)]">
+        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal md:text-[clamp(1.9rem,2.6vw,2.4rem)]">
           <span className="mb-3.5 block md:mb-1">Μάθε Γερμανικά.</span>
           <span className="mb-6 block md:mb-1">Μάθε Αγγλικά.</span>
           <span className="block">

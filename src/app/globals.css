@@ -133,18 +133,18 @@ select {
 
 @media (min-width: 768px) {
   .section-pad {
-    padding-block: 1.35rem;
+    padding-block: 1.1rem;
   }
 
   .section-title {
-    margin-top: 0.3rem;
-    max-width: 32ch;
-    font-size: 1.75rem;
+    margin-top: 0.2rem;
+    max-width: 36ch;
+    font-size: 1.55rem;
     line-height: 1.2;
   }
 
   .section-stack {
-    margin-top: 0.9rem;
+    margin-top: 0.7rem;
   }
 }
 

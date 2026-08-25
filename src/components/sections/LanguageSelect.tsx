@@ -61,31 +61,33 @@ export function LanguageSelect() {
                 onClick={() => pick(lang.id)}
                 onMouseEnter={() => setActive(lang.id)}
                 className={cn(
-                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left md:p-5",
+                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left md:p-4",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 whileTap={{ scale: 0.985 }}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span className="text-4xl" aria-hidden>
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex min-w-0 items-center gap-3 md:gap-4">
+                    <span className="text-4xl md:text-3xl" aria-hidden>
                       {lang.flag}
                     </span>
-                    <h3 className="font-display mt-3 text-3xl leading-tight md:mt-2 md:text-2xl">
-                      {lang.title}
-                    </h3>
-                    <p
-                      className={cn(
-                        "mt-3 max-w-sm leading-relaxed lg:mt-2",
-                        isActive ? "text-cream/75" : "text-ink/65",
-                      )}
-                    >
-                      {lang.blurb}
-                    </p>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-3xl leading-tight md:text-xl">
+                        {lang.title}
+                      </h3>
+                      <p
+                        className={cn(
+                          "mt-1 max-w-sm text-sm leading-snug md:mt-0.5",
+                          isActive ? "text-cream/75" : "text-ink/65",
+                        )}
+                      >
+                        {lang.blurb}
+                      </p>
+                    </div>
                   </div>
                   <span
                     className={cn(
-                      "rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-ink",
+                      "hidden shrink-0 rounded-full px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-ink sm:inline-flex",
                       lang.accent,
                     )}
                   >
@@ -96,7 +98,7 @@ export function LanguageSelect() {
                 <AnimatePresence>
                   {isActive ? (
                     <motion.div
-                      className="mt-5 space-y-3 lg:mt-4"
+                      className="mt-3 flex flex-wrap gap-2 md:mt-3"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
@@ -126,7 +128,7 @@ export function LanguageSelect() {
                       </div>
                     </motion.div>
                   ) : (
-                    <p className="mt-5 text-sm font-bold text-muted lg:mt-4">
+                    <p className="mt-3 text-sm font-bold text-muted md:hidden">
                       Tap / hover για unlock →
                     </p>
                   )}
