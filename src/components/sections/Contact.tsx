@@ -5,7 +5,9 @@ import { motion } from "framer-motion";
 import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/providers/ContactProvider";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { siteConfig } from "@/lib/config";
+import { goalLabels } from "@/data/goals";
 
 const contacts = [
   {
@@ -40,6 +42,7 @@ const contacts = [
 
 export function Contact() {
   const { openContact } = useContactModal();
+  const journey = useJourney();
 
   return (
     <section id="contact" className="relative overflow-hidden bg-navy text-cream">
@@ -59,8 +62,46 @@ export function Contact() {
             Η Βιργινία είναι ένα μήνυμα μακριά. Κυριολεκτικά.
           </p>
         </Reveal>
+
+        {(journey.selectedGoal ||
+          journey.estimatedLevel ||
+          journey.selectedLanguage) && (
+          <Reveal delay={0.12} className="mt-6">
+            <div className="inline-flex max-w-xl flex-wrap gap-2 rounded-2xl border-2 border-cream/20 bg-cream/10 p-3 text-sm">
+              {journey.selectedGoal ? (
+                <span className="rounded-full bg-yellow px-3 py-1 font-bold text-ink">
+                  {goalLabels[journey.selectedGoal]}
+                </span>
+              ) : null}
+              {journey.selectedLanguage ? (
+                <span className="rounded-full bg-blue px-3 py-1 font-bold text-paper">
+                  {journey.selectedLanguage === "german"
+                    ? "🇩🇪 Γερμανικά"
+                    : "🇬🇧 Αγγλικά"}
+                </span>
+              ) : null}
+              {journey.estimatedLevel ? (
+                <span className="rounded-full bg-coral px-3 py-1 font-bold text-paper">
+                  Level {journey.estimatedLevel}
+                </span>
+              ) : null}
+            </div>
+          </Reveal>
+        )}
+
         <Reveal delay={0.15} className="mt-8">
-          <Button variant="yellow" onClick={() => openContact()}>
+          <Button
+            variant="yellow"
+            onClick={() =>
+              openContact({
+                interest: journey.selectedLanguage ?? "german",
+                goal: journey.selectedGoal ?? undefined,
+                estimatedLevel: journey.estimatedLevel ?? undefined,
+                testScore: journey.testScore ?? undefined,
+                battleResult: journey.battleResult ?? undefined,
+              })
+            }
+          >
             Επικοινώνησε σήμερα →
           </Button>
         </Reveal>

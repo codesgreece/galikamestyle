@@ -6,6 +6,8 @@ import { X } from "lucide-react";
 import type { ContactPreset } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/config";
+import { goalLabels } from "@/data/goals";
+import { useJourney } from "@/components/providers/JourneyProvider";
 
 type FormState = {
   name: string;
@@ -53,7 +55,7 @@ export function ContactModal({
     <AnimatePresence>
       {open ? (
         <ContactModalContent
-          key={`${preset?.interest}-${preset?.format}`}
+          key={`${preset?.interest}-${preset?.format}-${preset?.estimatedLevel}-${preset?.goal}`}
           onClose={onClose}
           preset={preset}
         />
@@ -70,12 +72,25 @@ function ContactModalContent({
   preset?: Partial<ContactPreset>;
 }) {
   const titleId = useId();
-  const [form, setForm] = useState(() => createForm(preset));
+  const journey = useJourney();
+  const merged: Partial<ContactPreset> = {
+    interest: preset?.interest ?? journey.selectedLanguage ?? "german",
+    format: preset?.format ?? "private",
+    goal: preset?.goal ?? journey.selectedGoal ?? undefined,
+    estimatedLevel: preset?.estimatedLevel ?? journey.estimatedLevel ?? undefined,
+    testScore: preset?.testScore ?? journey.testScore ?? undefined,
+    battleResult: preset?.battleResult ?? journey.battleResult ?? undefined,
+  };
+  const [form, setForm] = useState(() => createForm(merged));
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.info("[contact-form]", { ...form, source: siteConfig.name });
+    console.info("[contact-form]", {
+      ...form,
+      journey: merged,
+      source: siteConfig.name,
+    });
     setSubmitted(true);
   };
 
@@ -120,11 +135,36 @@ function ContactModalContent({
           </button>
         </div>
 
+        {(merged.goal || merged.estimatedLevel || merged.interest) && (
+          <div className="mx-6 mt-5 grid gap-2 rounded-2xl border-2 border-ink bg-yellow/50 p-4 text-sm">
+            {merged.goal ? (
+              <p>
+                <span className="font-extrabold">Ο στόχος σου: </span>
+                {goalLabels[merged.goal]}
+              </p>
+            ) : null}
+            <p>
+              <span className="font-extrabold">Γλώσσα: </span>
+              {merged.interest === "english" ? "🇬🇧 Αγγλικά" : "🇩🇪 Γερμανικά"}
+            </p>
+            {merged.estimatedLevel ? (
+              <p>
+                <span className="font-extrabold">Ενδεικτικό επίπεδο: </span>
+                {merged.estimatedLevel}
+                {typeof merged.testScore === "number"
+                  ? ` · ${merged.testScore}/8`
+                  : ""}
+              </p>
+            ) : null}
+          </div>
+        )}
+
         {submitted ? (
           <div className="space-y-4 px-6 py-10">
             <p className="font-display text-3xl">Ωραίααα! 🎉</p>
             <p className="text-ink/70">
-              Το μήνυμα καταχωρήθηκε. Η Βιργινία θα επικοινωνήσει σύντομα.
+              Το μήνυμα καταχωρήθηκε με το journey σου. Η Βιργινία θα
+              επικοινωνήσει σύντομα.
             </p>
             <Button variant="yellow" onClick={onClose}>
               Κλείσιμο
@@ -195,7 +235,9 @@ function ContactModalContent({
               <textarea
                 rows={3}
                 value={form.message}
-                onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))}
+                onChange={(e) =>
+                  setForm((s) => ({ ...s, message: e.target.value }))
+                }
                 className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3"
                 placeholder="Πες μας τον στόχο σου..."
               />

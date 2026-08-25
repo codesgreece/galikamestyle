@@ -3,33 +3,41 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal, DropWords } from "@/components/ui/Reveal";
+import { useJourney } from "@/components/providers/JourneyProvider";
 import { cn } from "@/lib/utils";
 
 const languages = [
   {
-    id: "de",
+    id: "german" as const,
     flag: "🇩🇪",
     title: "ΓΕΡΜΑΝΙΚΑ",
     blurb: "Από Hallo μέχρι Goethe. Ναι, γίνεται.",
     words: ["Guten Tag", "Genau!", "Wunderbar", "Los geht’s"],
     facts: ["Goethe", "ÖSD", "TELC", "ΚΠΓ", "DaF"],
     accent: "bg-coral",
-    soft: "bg-coral/15",
   },
   {
-    id: "en",
+    id: "english" as const,
     flag: "🇬🇧",
     title: "ΑΓΓΛΙΚΑ",
     blurb: "Hello world… και μετά μιλάς άνετα.",
     words: ["Hello!", "Awesome", "Let’s talk", "Level up"],
     facts: ["NOCN C2", "A1 → C1", "Speaking", "Exams"],
     accent: "bg-blue",
-    soft: "bg-blue/15",
   },
-] as const;
+];
 
 export function LanguageSelect() {
-  const [active, setActive] = useState<"de" | "en" | null>(null);
+  const { selectedLanguage, setLanguage } = useJourney();
+  const [active, setActive] = useState<"german" | "english" | null>(
+    selectedLanguage,
+  );
+
+  const pick = (id: "german" | "english") => {
+    const next = active === id ? null : id;
+    setActive(next);
+    if (next) setLanguage(next);
+  };
 
   return (
     <section id="languages" className="relative overflow-hidden bg-cream">
@@ -50,7 +58,7 @@ export function LanguageSelect() {
               <motion.button
                 key={lang.id}
                 type="button"
-                onClick={() => setActive(isActive ? null : lang.id)}
+                onClick={() => pick(lang.id)}
                 onMouseEnter={() => setActive(lang.id)}
                 className={cn(
                   "pop-card relative overflow-hidden rounded-3xl p-7 text-left md:p-9",
@@ -66,7 +74,12 @@ export function LanguageSelect() {
                     <h3 className="font-display mt-4 text-3xl leading-tight md:text-5xl">
                       {lang.title}
                     </h3>
-                    <p className={cn("mt-4 max-w-sm leading-relaxed", isActive ? "text-cream/75" : "text-ink/65")}>
+                    <p
+                      className={cn(
+                        "mt-4 max-w-sm leading-relaxed",
+                        isActive ? "text-cream/75" : "text-ink/65",
+                      )}
+                    >
                       {lang.blurb}
                     </p>
                   </div>

@@ -171,14 +171,14 @@ export function Hero() {
           <Button
             variant="coral"
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
-            onClick={() => scrollToId("contact")}
+            onClick={() => scrollToId("goal")}
           >
             Πάμε να γνωριστούμε →
           </Button>
           <Button
             variant="yellow"
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
-            onClick={() => scrollToId("pricing")}
+            onClick={() => scrollToId("level-test")}
           >
             Ποιο είναι το δικό σου στυλ;
           </Button>

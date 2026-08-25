@@ -40,9 +40,9 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "#hero", label: "Αρχική" },
-  { href: "#languages", label: "Γλώσσες" },
-  { href: "#levels", label: "Επίπεδα" },
-  { href: "#about", label: "Η Βιργινία" },
+  { href: "#goal", label: "Στόχος" },
+  { href: "#level-test", label: "Test" },
+  { href: "#battle", label: "Battle" },
   { href: "#pricing", label: "Modes" },
   { href: "#contact", label: "Πάμε!" },
 ] as const;
