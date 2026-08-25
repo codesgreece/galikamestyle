@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { siteConfig } from "@/lib/config";
@@ -18,16 +19,24 @@ export function About() {
         <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal>
             <div className="relative mx-auto max-w-md">
-              <div className="pop-card overflow-hidden rounded-[2rem] bg-navy">
-                <div className="relative aspect-[4/5] bg-[linear-gradient(145deg,#1c1850,#3d8bff_55%,#ff5d7a)]">
-                  <div className="absolute inset-x-0 bottom-0 p-5">
+              <div className="pop-card overflow-hidden rounded-[2rem] border-[3px] border-ink bg-white shadow-[8px_8px_0_#1a1433]">
+                <div className="relative aspect-[4/5] bg-white">
+                  <Image
+                    src="/images/virginia-panaki.png"
+                    alt={`${siteConfig.teacher} — καθηγήτρια Γερμανικών και Αγγλικών`}
+                    fill
+                    sizes="(max-width: 768px) 90vw, 420px"
+                    className="object-cover object-[center_18%]"
+                    priority={false}
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent p-5 pt-16">
                     <div className="rounded-2xl border-2 border-ink bg-cream p-4 text-ink shadow-[5px_5px_0_#ffe14a]">
                       <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
-                        Portrait placeholder
+                        Meet Virginia
                       </p>
                       <p className="font-display mt-1 text-3xl">{siteConfig.teacher}</p>
                       <p className="mt-1 text-sm text-ink/65">
-                        Άλλαξε εύκολα με τη φωτογραφία σου.
+                        Γερμανικά & Αγγλικά με ρυθμό και στυλ.
                       </p>
                     </div>
                   </div>
