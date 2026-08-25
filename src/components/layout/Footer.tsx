@@ -11,7 +11,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="border-t-[3px] border-ink bg-navy text-cream">
-      <div className="container-shell py-12 md:py-14">
+      <div className="container-shell py-14 md:py-16">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-display text-3xl">

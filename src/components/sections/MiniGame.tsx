@@ -38,18 +38,18 @@ export function MiniGame() {
             Mini challenge
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.6rem)]">
+        <h2 className="font-display mt-4 text-[clamp(1.9rem,6.5vw,3.5rem)] leading-[1.18]">
           <DropWords text="Μικρή πρόκληση." />{" "}
           <span className="inline-block animate-wiggle">😏</span>
         </h2>
 
-        <div className="relative mx-auto mt-10 max-w-xl">
-          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-6 md:p-8">
+        <div className="relative mx-auto mt-12 max-w-xl">
+          <div className="pop-card relative overflow-hidden rounded-3xl bg-paper p-7 md:p-9">
             <ConfettiBurst show={status === "correct"} />
             <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
               {question.lang === "de" ? "Γερμανικά" : "Αγγλικά"} → Ελληνικά
             </p>
-            <p className="font-display mt-4 text-5xl tracking-wide md:text-6xl">
+            <p className="font-display mt-4 text-4xl tracking-wide sm:text-5xl md:text-6xl">
               {question.word}
             </p>
             <div className="mt-8 grid gap-3">

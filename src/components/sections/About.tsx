@@ -52,7 +52,7 @@ export function About() {
                 Meet the teacher
               </p>
             </Reveal>
-            <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.6rem)] leading-[1.05]">
+            <h2 className="font-display mt-4 text-[clamp(1.9rem,6.5vw,3.5rem)] leading-[1.18] sm:leading-[1.12]">
               <DropWords text="Η δασκάλα πίσω από το «Γερμανικά με Στυλ»." />
             </h2>
             <Reveal delay={0.1}>
@@ -62,7 +62,7 @@ export function About() {
               </p>
             </Reveal>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+            <div className="mt-10 grid gap-4 sm:grid-cols-2">
               <InfoCard title="🎓 Γερμανικά" text="ÖSD • ΚΠΓ • Goethe C2" tone="bg-yellow" />
               <InfoCard title="🇬🇧 Αγγλικά" text="NOCN C2" tone="bg-blue text-paper" />
               <InfoCard
@@ -89,7 +89,7 @@ function InfoCard({
   tone: string;
 }) {
   return (
-    <div className={`rounded-3xl border-[3px] border-ink p-4 shadow-[5px_5px_0_#1a1433] ${tone}`}>
+    <div className={`rounded-3xl border-[3px] border-ink p-5 shadow-[5px_5px_0_#1a1433] ${tone}`}>
       <p className="font-display text-xl">{title}</p>
       <p className="mt-2 text-sm font-medium opacity-90">{text}</p>
     </div>

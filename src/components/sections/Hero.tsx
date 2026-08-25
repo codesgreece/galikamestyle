@@ -94,18 +94,32 @@ export function Hero() {
 
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="blob animate-blob absolute -left-16 top-24 h-56 w-56 bg-coral/30 blur-2xl" />
-        <div className="blob animate-blob absolute right-0 top-40 h-64 w-64 bg-blue/25 blur-2xl" style={{ animationDelay: "1s" }} />
-        <div className="blob animate-blob absolute bottom-10 left-1/3 h-48 w-48 bg-yellow/20 blur-2xl" style={{ animationDelay: "2s" }} />
+        <div
+          className="blob animate-blob absolute right-0 top-40 h-64 w-64 bg-blue/25 blur-2xl"
+          style={{ animationDelay: "1s" }}
+        />
+        <div
+          className="blob animate-blob absolute bottom-10 left-1/3 h-48 w-48 bg-yellow/20 blur-2xl"
+          style={{ animationDelay: "2s" }}
+        />
       </div>
 
-      <motion.div style={{ x: sx, y: sy }} className="pointer-events-none absolute inset-0 hidden md:block" aria-hidden>
+      <motion.div
+        style={{ x: sx, y: sy }}
+        className="pointer-events-none absolute inset-0 hidden md:block"
+        aria-hidden
+      >
         {floaters.map((f, i) => (
           <motion.span
             key={f.text}
             className={`sticker absolute rounded-full px-3 py-1.5 text-xs font-extrabold text-ink ${f.color}`}
             style={{ left: f.x, top: f.y }}
             animate={{ y: [0, -8, 0], rotate: [-2, 2, -2] }}
-            transition={{ duration: 4 + i * 0.4, repeat: Infinity, ease: "easeInOut" }}
+            transition={{
+              duration: 4 + i * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
           >
             {f.text}
           </motion.span>
@@ -114,23 +128,23 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-center pb-16 pt-28">
-        <p className="mb-4 inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.18em] text-yellow">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-center gap-7 py-28 sm:gap-8 md:gap-10 md:py-32">
+        <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display max-w-4xl text-[clamp(2.4rem,8vw,5.4rem)] leading-[0.95]">
-          <span className="block">Μάθε Γερμανικά.</span>
-          <span className="block">Μάθε Αγγλικά.</span>
-          <span className="mt-2 block">
+        <h1 className="font-display max-w-[12ch] text-[clamp(2.15rem,9.5vw,5.2rem)] leading-[1.18] tracking-[-0.02em] sm:max-w-4xl sm:leading-[1.12]">
+          <span className="block pb-1">Μάθε Γερμανικά.</span>
+          <span className="block pb-1">Μάθε Αγγλικά.</span>
+          <span className="mt-3 block sm:mt-4">
             Και κάν’ το με{" "}
             <button
               type="button"
               onClick={onStylClick}
-              className="focus-ring relative inline-block rounded-xl px-2 transition"
+              className="focus-ring relative inline-block rounded-xl px-1 transition sm:px-2"
               style={{
                 color: stylColor,
-                textShadow: `4px 4px 0 rgba(0,0,0,0.25)`,
+                textShadow: `3px 3px 0 rgba(0,0,0,0.22)`,
               }}
               aria-label="ΣΤΥΛ — πάτα για surprise"
             >
@@ -148,25 +162,33 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="mt-6 max-w-xl text-base text-cream/75 md:text-lg">
+        <p className="max-w-xl text-[1.05rem] leading-relaxed text-cream/78 sm:text-lg sm:leading-8">
           Εδώ δεν θα βαρεθείς να μάθεις γλώσσες. Μαθήματα για παιδιά από 10+ και
           εφήβους — με πραγματική πρόοδο και λίγο χιούμορ.
         </p>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button variant="coral" onClick={() => scrollToId("contact")}>
+        <div className="flex flex-col gap-3.5 sm:flex-row sm:gap-4">
+          <Button
+            variant="coral"
+            className="min-h-13 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            onClick={() => scrollToId("contact")}
+          >
             Πάμε να γνωριστούμε →
           </Button>
-          <Button variant="yellow" onClick={() => scrollToId("pricing")}>
+          <Button
+            variant="yellow"
+            className="min-h-13 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            onClick={() => scrollToId("pricing")}
+          >
             Ποιο είναι το δικό σου στυλ;
           </Button>
         </div>
 
-        <div className="mt-10 max-w-lg rounded-3xl border-[3px] border-ink bg-cream p-4 text-ink shadow-[8px_8px_0_#1a1433]">
-          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-muted">
+        <div className="max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] sm:p-6">
+          <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.18em] text-muted">
             Διάλεξε μια λέξη
           </p>
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-4 flex flex-wrap gap-2.5">
             {wordPicks.map((w) => (
               <button
                 key={w.id}
@@ -176,7 +198,7 @@ export function Hero() {
                   setToast(w.message);
                   window.setTimeout(() => setMood(null), 1600);
                 }}
-                className="focus-ring rounded-full border-2 border-ink bg-paper px-4 py-2 text-sm font-bold shadow-[3px_3px_0_#1a1433] transition active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#1a1433]"
+                className="focus-ring rounded-full border-2 border-ink bg-paper px-4 py-2.5 text-sm font-bold shadow-[3px_3px_0_#1a1433] transition active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0_#1a1433]"
               >
                 {w.label}
               </button>

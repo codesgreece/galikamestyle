@@ -50,7 +50,7 @@ export function Contact() {
             Πάμε να γνωριστούμε
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 max-w-3xl text-[clamp(2.2rem,6vw,4.2rem)] leading-[1.05]">
+        <h2 className="font-display mt-4 max-w-3xl text-[clamp(2rem,6.8vw,4rem)] leading-[1.18] sm:leading-[1.12]">
           <DropWords text="Έτοιμος για το πρώτο σου “Hallo”;" />{" "}
           <span>👋</span>
         </h2>
@@ -65,7 +65,7 @@ export function Contact() {
           </Button>
         </Reveal>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2">
           {contacts.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -74,7 +74,7 @@ export function Contact() {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="focus-ring flex items-center gap-4 rounded-3xl border-[3px] border-ink bg-cream p-5 text-ink shadow-[6px_6px_0_#ffe14a] transition hover:-translate-y-1"
+                className="focus-ring flex items-center gap-4 rounded-3xl border-[3px] border-ink bg-cream p-6 text-ink shadow-[6px_6px_0_#ffe14a] transition hover:-translate-y-1"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

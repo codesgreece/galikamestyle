@@ -51,7 +51,7 @@ export function Button({
   };
 
   const classes = cn(
-    "focus-ring inline-flex items-center justify-center gap-2 border-[3px] px-5 py-3 text-sm font-extrabold uppercase tracking-[0.04em] shadow-[5px_5px_0_#1a1433] transition hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0_#1a1433] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[3px_3px_0_#1a1433]",
+    "focus-ring inline-flex items-center justify-center gap-2 border-[3px] px-5 py-3.5 text-center text-[0.8rem] font-extrabold uppercase leading-snug tracking-[0.03em] shadow-[5px_5px_0_#1a1433] transition hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[7px_7px_0_#1a1433] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[3px_3px_0_#1a1433] sm:text-sm",
     styles[variant],
     className,
   );

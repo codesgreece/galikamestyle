@@ -20,7 +20,7 @@ export function ExamPrep() {
             Boss level
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.8rem)] leading-[1.05]">
+        <h2 className="font-display mt-4 text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18] sm:leading-[1.12]">
           <DropWords text="Οι εξετάσεις." />{" "}
           <span className="text-yellow">🎯</span>
         </h2>
@@ -30,11 +30,11 @@ export function ExamPrep() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {exams.map((exam, i) => (
             <motion.article
               key={exam.name}
-              className="group rounded-3xl border-[3px] border-ink bg-cream p-5 text-ink shadow-[6px_6px_0_#3d8bff] transition hover:-translate-y-1 hover:shadow-[8px_8px_0_#ffe14a]"
+              className="group rounded-3xl border-[3px] border-ink bg-cream p-6 text-ink shadow-[6px_6px_0_#3d8bff] transition hover:-translate-y-1 hover:shadow-[8px_8px_0_#ffe14a]"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

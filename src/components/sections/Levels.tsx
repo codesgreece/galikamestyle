@@ -27,7 +27,7 @@ export function Levels() {
             Από “Hallo” μέχρι “Μιλάω και δεν σταματάω”
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 max-w-3xl text-[clamp(2rem,5vw,3.8rem)] leading-[1.05]">
+        <h2 className="font-display mt-4 max-w-3xl text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18] sm:leading-[1.12]">
           <DropWords text="Πού βρίσκεσαι τώρα;" />
         </h2>
         <Reveal delay={0.1}>
@@ -46,7 +46,7 @@ export function Levels() {
             transition={{ duration: 0.5 }}
           />
 
-          <div className="space-y-5">
+          <div className="space-y-6">
             {levels.map((level, i) => {
               const unlocked = inView && i <= active;
               return (
@@ -55,7 +55,7 @@ export function Levels() {
                   type="button"
                   onClick={() => setActive(i)}
                   className={cn(
-                    "relative ml-14 block w-[calc(100%-3.5rem)] rounded-3xl border-[3px] border-ink p-5 text-left transition md:ml-0 md:w-full md:max-w-xl",
+                    "relative ml-12 block w-[calc(100%-3rem)] rounded-3xl border-[3px] border-ink p-6 text-left transition sm:ml-14 sm:w-[calc(100%-3.5rem)] md:ml-0 md:w-full md:max-w-xl",
                     i % 2 === 0 ? "md:mr-auto md:pr-8" : "md:ml-auto md:pl-8",
                     unlocked ? "bg-cream text-ink shadow-[8px_8px_0_#ffe14a]" : "bg-navy-soft text-cream/50",
                   )}

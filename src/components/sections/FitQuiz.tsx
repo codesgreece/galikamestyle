@@ -71,11 +71,11 @@ export function FitQuiz() {
             Quick quiz
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.6rem)]">
+        <h2 className="font-display mt-4 text-[clamp(1.9rem,6.5vw,3.5rem)] leading-[1.18]">
           <DropWords text="Ποιο μάθημα σου ταιριάζει;" />
         </h2>
 
-        <div className="mx-auto mt-10 max-w-2xl rounded-[2rem] border-[3px] border-ink bg-paper p-6 shadow-[8px_8px_0_#1a1433] md:p-8">
+        <div className="mx-auto mt-12 max-w-2xl rounded-[2rem] border-[3px] border-ink bg-paper p-6 shadow-[8px_8px_0_#1a1433] md:p-8">
           <div className="mb-6 flex gap-2">
             {steps.map((_, i) => (
               <span
@@ -96,16 +96,16 @@ export function FitQuiz() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -16 }}
               >
-                <p className="font-display text-2xl md:text-3xl">
+                <p className="font-display text-[1.65rem] leading-snug md:text-3xl">
                   {steps[step].question}
                 </p>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="mt-7 grid gap-3.5 sm:grid-cols-2">
                   {steps[step].options.map((opt) => (
                     <button
                       key={opt.value}
                       type="button"
                       onClick={() => select(steps[step].key, opt.value)}
-                      className="focus-ring rounded-2xl border-[3px] border-ink bg-cream px-4 py-4 text-left font-bold shadow-[4px_4px_0_#1a1433] transition hover:bg-yellow"
+                      className="focus-ring rounded-2xl border-[3px] border-ink bg-cream px-4 py-5 text-left text-base font-bold shadow-[4px_4px_0_#1a1433] transition hover:bg-yellow"
                     >
                       {opt.label}
                     </button>

@@ -39,11 +39,11 @@ export function LanguageSelect() {
             Character select
           </p>
         </Reveal>
-        <h2 className="font-display mt-3 max-w-3xl text-[clamp(2rem,5vw,3.8rem)] leading-[1.05]">
+        <h2 className="font-display mt-4 max-w-3xl text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18] sm:leading-[1.12]">
           <DropWords text="Ποια γλώσσα θα κατακτήσεις πρώτα;" />
         </h2>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
+        <div className="mt-14 grid gap-7 lg:grid-cols-2">
           {languages.map((lang) => {
             const isActive = active === lang.id;
             return (
@@ -53,7 +53,7 @@ export function LanguageSelect() {
                 onClick={() => setActive(isActive ? null : lang.id)}
                 onMouseEnter={() => setActive(lang.id)}
                 className={cn(
-                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left md:p-8",
+                  "pop-card relative overflow-hidden rounded-3xl p-7 text-left md:p-9",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 whileTap={{ scale: 0.985 }}
@@ -63,10 +63,10 @@ export function LanguageSelect() {
                     <span className="text-4xl" aria-hidden>
                       {lang.flag}
                     </span>
-                    <h3 className="font-display mt-3 text-4xl md:text-5xl">
+                    <h3 className="font-display mt-4 text-3xl leading-tight md:text-5xl">
                       {lang.title}
                     </h3>
-                    <p className={cn("mt-3 max-w-sm", isActive ? "text-cream/75" : "text-ink/65")}>
+                    <p className={cn("mt-4 max-w-sm leading-relaxed", isActive ? "text-cream/75" : "text-ink/65")}>
                       {lang.blurb}
                     </p>
                   </div>

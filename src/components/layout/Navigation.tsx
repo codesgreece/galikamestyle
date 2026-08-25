@@ -41,7 +41,7 @@ export function Navigation() {
             : "bg-transparent",
         )}
       >
-        <div className="container-shell flex h-[4.25rem] items-center justify-between md:h-[4.75rem]">
+        <div className="container-shell flex h-[4.5rem] items-center justify-between md:h-[5rem]">
           <a
             href="#hero"
             onClick={(e) => {
