@@ -128,19 +128,19 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-center gap-8 py-32 sm:gap-9 md:gap-11 md:py-36">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.5rem] sm:gap-9 sm:justify-center sm:pb-24 sm:pt-32 md:gap-11 md:py-36">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(2rem,8.2vw,5.2rem)] leading-[1.22] tracking-[-0.02em] sm:leading-[1.14]">
-          <span className="block whitespace-nowrap pb-1.5 sm:pb-2">
+        <h1 className="font-display text-[clamp(1.85rem,7.4vw,5.2rem)] leading-[1.28] tracking-[-0.015em] sm:leading-[1.16]">
+          <span className="block whitespace-nowrap py-0.5 sm:py-1">
             Μάθε Γερμανικά.
           </span>
-          <span className="block whitespace-nowrap pb-1.5 sm:pb-2">
+          <span className="block whitespace-nowrap py-0.5 sm:py-1">
             Μάθε Αγγλικά.
           </span>
-          <span className="mt-4 block sm:mt-5">
+          <span className="mt-5 block sm:mt-6">
             Και κάν’ το με{" "}
             <button
               type="button"
@@ -166,29 +166,29 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="max-w-xl text-[1.05rem] leading-relaxed text-cream/78 sm:text-lg sm:leading-8">
+        <p className="max-w-xl text-[1.05rem] leading-8 text-cream/80 sm:text-lg sm:leading-8">
           Εδώ δεν θα βαρεθείς να μάθεις γλώσσες. Μαθήματα για παιδιά από 10+ και
           εφήβους — με πραγματική πρόοδο και λίγο χιούμορ.
         </p>
 
-        <div className="flex flex-col gap-3.5 sm:flex-row sm:gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:gap-4">
           <Button
             variant="coral"
-            className="min-h-13 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
             onClick={() => scrollToId("contact")}
           >
             Πάμε να γνωριστούμε →
           </Button>
           <Button
             variant="yellow"
-            className="min-h-13 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
+            className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto"
             onClick={() => scrollToId("pricing")}
           >
             Ποιο είναι το δικό σου στυλ;
           </Button>
         </div>
 
-        <div className="max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] sm:p-6">
+        <div className="mt-2 max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] sm:mt-0 sm:p-6">
           <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.18em] text-muted">
             Διάλεξε μια λέξη
           </p>

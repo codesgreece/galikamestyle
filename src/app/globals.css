@@ -100,19 +100,19 @@ select {
 }
 
 .container-shell {
-  width: min(1120px, calc(100% - 2.5rem));
+  width: min(1120px, calc(100% - 2.75rem));
   margin-inline: auto;
 }
 
 @media (min-width: 640px) {
   .container-shell {
-    width: min(1120px, calc(100% - 3rem));
+    width: min(1120px, calc(100% - 3.5rem));
   }
 }
 
 @media (min-width: 768px) {
   .container-shell {
-    width: min(1120px, calc(100% - 4rem));
+    width: min(1120px, calc(100% - 4.5rem));
   }
 }
 
