@@ -238,7 +238,7 @@ function ContactModalContent({
                 onChange={(e) =>
                   setForm((s) => ({ ...s, message: e.target.value }))
                 }
-                className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3"
+                className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40"
                 placeholder="Πες μας τον στόχο σου..."
               />
             </label>
@@ -273,7 +273,7 @@ function Field({
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3"
+        className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3 text-ink placeholder:text-ink/40"
       />
     </label>
   );

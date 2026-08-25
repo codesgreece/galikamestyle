@@ -126,11 +126,11 @@ export function Contact() {
                 >
                   <Icon size={18} />
                 </span>
-                <span>
+                <span className="text-ink">
                   <span className="block text-xs font-extrabold uppercase tracking-[0.16em] text-muted">
                     {item.label}
                   </span>
-                  <span className="mt-1 block text-base font-bold md:text-lg">
+                  <span className="mt-1 block text-base font-bold text-ink md:text-lg">
                     {item.value}
                   </span>
                 </span>

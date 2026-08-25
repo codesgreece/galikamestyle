@@ -225,11 +225,7 @@ export function LanguageBattle() {
                   >
                     Μάθε Αγγλικά →
                   </Button>
-                  <Button
-                    variant="ghost"
-                    className="!border-cream/40 !text-cream"
-                    onClick={restart}
-                  >
+                  <Button variant="yellow" onClick={restart}>
                     Rematch
                   </Button>
                 </div>
