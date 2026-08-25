@@ -133,13 +133,9 @@ export function Hero() {
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.65rem,6.4vw,5.2rem)] tracking-[-0.01em] sm:text-[clamp(2.2rem,5vw,5.2rem)]">
-          <span className="mb-3 block whitespace-nowrap sm:mb-2">
-            Μάθε Γερμανικά.
-          </span>
-          <span className="mb-5 block whitespace-nowrap sm:mb-3">
-            Μάθε Αγγλικά.
-          </span>
+        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal sm:text-[clamp(2.35rem,5.2vw,4.8rem)]">
+          <span className="mb-3.5 block sm:mb-2.5">Μάθε Γερμανικά.</span>
+          <span className="mb-6 block sm:mb-4">Μάθε Αγγλικά.</span>
           <span className="block">
             Και κάν’ το με{" "}
             <button

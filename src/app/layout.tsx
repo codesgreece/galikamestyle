@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope, Syne } from "next/font/google";
+import { Comfortaa, Manrope } from "next/font/google";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -9,10 +9,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const comfortaa = Comfortaa({
+  variable: "--font-comfortaa",
   subsets: ["latin", "greek"],
-  weight: ["500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
   display: "swap",
 });
 
@@ -53,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${manrope.variable} ${syne.variable}`}>
+    <html lang="el" className={`${manrope.variable} ${comfortaa.variable}`}>
       <body className="min-h-screen bg-cream text-ink antialiased">{children}</body>
     </html>
   );
