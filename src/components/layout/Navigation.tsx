@@ -48,7 +48,10 @@ export function Navigation() {
               e.preventDefault();
               go("#hero");
             }}
-            className="focus-ring font-display text-lg md:text-xl"
+            className={cn(
+              "focus-ring font-display text-lg md:text-xl",
+              scrolled ? "text-ink" : "text-cream",
+            )}
           >
             Γερμανικά{" "}
             <span className="rounded-md bg-yellow px-1.5 py-0.5 text-ink">
@@ -56,7 +59,13 @@ export function Navigation() {
             </span>
           </a>
 
-          <nav className="hidden items-center gap-5 lg:flex" aria-label="Κύριο μενού">
+          <nav
+            className={cn(
+              "hidden items-center gap-5 lg:flex",
+              scrolled ? "text-ink/75" : "text-cream/85",
+            )}
+            aria-label="Κύριο μενού"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -65,7 +74,10 @@ export function Navigation() {
                   e.preventDefault();
                   go(link.href);
                 }}
-                className="focus-ring text-sm font-bold text-ink/75 transition hover:text-ink"
+                className={cn(
+                  "focus-ring text-sm font-bold transition",
+                  scrolled ? "hover:text-ink" : "hover:text-yellow",
+                )}
               >
                 {link.label}
               </a>
