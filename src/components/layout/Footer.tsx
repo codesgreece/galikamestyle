@@ -11,7 +11,7 @@ const links = [
 export function Footer() {
   return (
     <footer className="border-t-[3px] border-ink bg-navy text-cream">
-      <div className="container-shell py-14 md:py-16">
+      <div className="container-shell py-10 lg:py-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="font-display text-3xl">
@@ -40,7 +40,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div className="mt-10 flex flex-col gap-2 border-t border-cream/15 pt-5 text-xs text-cream/45 sm:flex-row sm:justify-between">
+        <div className="mt-7 flex flex-col gap-2 border-t border-cream/15 pt-5 text-xs text-cream/45 sm:flex-row sm:justify-between">
           <p>© 2026 {siteConfig.name}</p>
           <p>{siteConfig.teacher}</p>
         </div>

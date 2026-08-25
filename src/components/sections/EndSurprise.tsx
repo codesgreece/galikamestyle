@@ -8,10 +8,10 @@ export function EndSurprise() {
   const inView = useInView(ref, { once: true, amount: 0.6 });
 
   return (
-    <section ref={ref} className="relative overflow-hidden bg-cream py-24 md:py-32">
+    <section ref={ref} className="relative overflow-hidden bg-cream py-16 sm:py-20 lg:py-16">
       <div className="container-shell text-center">
         <motion.blockquote
-          className="font-display mx-auto max-w-3xl text-[clamp(1.6rem,4vw,3rem)] leading-[1.15]"
+          className="font-display mx-auto max-w-3xl text-[clamp(1.6rem,4vw,2.35rem)] leading-[1.2]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -24,7 +24,7 @@ export function EndSurprise() {
 
         {inView ? (
           <motion.p
-            className="mx-auto mt-10 inline-flex rounded-full border-[3px] border-ink bg-yellow px-5 py-3 text-sm font-extrabold shadow-[5px_5px_0_#1a1433]"
+            className="mx-auto mt-6 inline-flex rounded-full border-[3px] border-ink bg-yellow px-5 py-3 text-sm font-extrabold shadow-[5px_5px_0_#1a1433] lg:mt-7"
             initial={{ opacity: 0, scale: 0.85, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
           >

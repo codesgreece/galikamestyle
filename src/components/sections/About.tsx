@@ -16,26 +16,26 @@ export function About() {
   return (
     <section id="about" className="relative bg-paper">
       <div className="container-shell section-pad">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10">
           <Reveal>
-            <div className="relative mx-auto max-w-md">
+            <div className="relative mx-auto max-w-md lg:max-w-[19rem]">
               <div className="pop-card overflow-hidden rounded-[2rem] border-[3px] border-ink bg-white shadow-[8px_8px_0_#1a1433]">
-                <div className="relative aspect-[4/5] bg-white">
+                <div className="relative aspect-[4/5] bg-white lg:aspect-auto lg:h-[22rem]">
                   <Image
                     src="/images/virginia-panaki.png"
                     alt={`${siteConfig.teacher} — καθηγήτρια Γερμανικών και Αγγλικών`}
                     fill
-                    sizes="(max-width: 768px) 90vw, 420px"
+                    sizes="(max-width: 768px) 90vw, 320px"
                     className="object-cover object-[center_18%]"
                     priority={false}
                   />
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent p-5 pt-16">
-                    <div className="rounded-2xl border-2 border-ink bg-cream p-4 text-ink shadow-[5px_5px_0_#ffe14a]">
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-white via-white/90 to-transparent p-5 pt-16 lg:p-3 lg:pt-10">
+                    <div className="rounded-2xl border-2 border-ink bg-cream p-4 text-ink shadow-[5px_5px_0_#ffe14a] lg:p-3">
                       <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
                         Meet Virginia
                       </p>
-                      <p className="font-display mt-1 text-3xl">{siteConfig.teacher}</p>
-                      <p className="mt-1 text-sm text-ink/65">
+                      <p className="font-display mt-1 text-3xl lg:text-xl">{siteConfig.teacher}</p>
+                      <p className="mt-1 text-sm text-ink/65 lg:text-xs">
                         Γερμανικά & Αγγλικά με ρυθμό και στυλ.
                       </p>
                     </div>
@@ -61,17 +61,17 @@ export function About() {
                 Meet the teacher
               </p>
             </Reveal>
-            <h2 className="font-display mt-4 text-[clamp(1.9rem,6.5vw,3.5rem)] leading-[1.18] sm:leading-[1.12]">
+            <h2 className="section-title font-display">
               <DropWords text="Η δασκάλα πίσω από το «Γερμανικά με Στυλ»." />
             </h2>
             <Reveal delay={0.1}>
-              <p className="mt-5 text-lg text-ink/70">
+              <p className="mt-4 text-lg text-ink/70 lg:mt-3">
                 Όχι βαρετό βιογραφικό. Απλά μια καθηγήτρια που πιστεύει ότι η
                 γλώσσα μαθαίνεται καλύτερα όταν έχει ρυθμό, νόημα και λίγο στυλ.
               </p>
             </Reveal>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:mt-6">
               <InfoCard title="🎓 Γερμανικά" text="ÖSD • ΚΠΓ • Goethe C2" tone="bg-yellow" />
               <InfoCard title="🇬🇧 Αγγλικά" text="NOCN C2" tone="bg-blue text-paper" />
               <InfoCard
@@ -98,7 +98,7 @@ function InfoCard({
   tone: string;
 }) {
   return (
-    <div className={`rounded-3xl border-[3px] border-ink p-5 shadow-[5px_5px_0_#1a1433] ${tone}`}>
+    <div className={`rounded-3xl border-[3px] border-ink p-4 shadow-[5px_5px_0_#1a1433] lg:p-4 ${tone}`}>
       <p className="font-display text-xl">{title}</p>
       <p className="mt-2 text-sm font-medium opacity-90">{text}</p>
     </div>

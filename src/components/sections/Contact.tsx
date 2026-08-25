@@ -53,12 +53,12 @@ export function Contact() {
             Πάμε να γνωριστούμε
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 max-w-3xl text-[clamp(2rem,6.8vw,4rem)] leading-[1.18] sm:leading-[1.12]">
+        <h2 className="section-title font-display max-w-3xl">
           <DropWords text="Έτοιμος για το πρώτο σου “Hallo”;" />{" "}
           <span>👋</span>
         </h2>
         <Reveal delay={0.1}>
-          <p className="mt-5 max-w-xl text-lg text-cream/70">
+          <p className="mt-3 max-w-xl text-lg text-cream/70 sm:mt-4">
             Η Βιργινία είναι ένα μήνυμα μακριά. Κυριολεκτικά.
           </p>
         </Reveal>
@@ -106,7 +106,7 @@ export function Contact() {
           </Button>
         </Reveal>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2">
+        <div className="section-stack grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {contacts.map((item, i) => {
             const Icon = item.icon;
             return (
@@ -115,7 +115,7 @@ export function Contact() {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="focus-ring flex items-center gap-4 rounded-3xl border-[3px] border-ink bg-cream p-6 text-ink shadow-[6px_6px_0_#ffe14a] transition hover:-translate-y-1"
+                className="focus-ring flex items-center gap-3 rounded-3xl border-[3px] border-ink bg-cream p-4 text-ink shadow-[6px_6px_0_#ffe14a] transition hover:-translate-y-1 lg:p-4"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -130,7 +130,7 @@ export function Contact() {
                   <span className="block text-xs font-extrabold uppercase tracking-[0.16em] text-muted">
                     {item.label}
                   </span>
-                  <span className="mt-1 block text-base font-bold text-ink md:text-lg">
+                  <span className="mt-1 block break-words text-sm font-bold text-ink md:text-base lg:text-sm">
                     {item.value}
                   </span>
                 </span>

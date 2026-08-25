@@ -90,7 +90,7 @@ export function LanguageBattle() {
             Language battle
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 text-[clamp(1.85rem,6vw,4rem)] leading-[1.1] sm:text-[clamp(2rem,7vw,4rem)]">
+        <h2 className="section-title font-display text-[clamp(1.85rem,6vw,3.2rem)] sm:text-[clamp(2rem,4.5vw,2.6rem)]">
           <span className="inline-flex flex-col items-start sm:flex-row sm:items-baseline">
             <span className="text-coral">GERMAN</span>
             <span className="mx-0 my-0.5 text-[0.55em] text-ink/30 sm:mx-2 sm:my-0 sm:text-[1em]">
@@ -105,18 +105,18 @@ export function LanguageBattle() {
           </p>
         </Reveal>
 
-        <div className="mt-8 flex items-center justify-center gap-4 sm:gap-8">
+        <div className="mt-6 flex items-center justify-center gap-4 sm:mt-8 sm:gap-8">
           <ScorePill side="GERMAN" score={germanScore} tone="bg-coral text-paper" />
           <span className="font-display text-xl text-ink/35">VS</span>
           <ScorePill side="ENGLISH" score={englishScore} tone="bg-blue text-paper" />
         </div>
 
-        <div className="mx-auto mt-10 max-w-3xl">
+        <div className="section-stack mx-auto max-w-3xl">
           <AnimatePresence mode="wait">
             {!finished && round ? (
               <motion.div
                 key={round.id}
-                className="rounded-[1.75rem] border-[3px] border-ink bg-paper p-5 shadow-[8px_8px_0_#1a1433] sm:p-8"
+                className="rounded-[1.75rem] border-[3px] border-ink bg-paper p-5 shadow-[8px_8px_0_#1a1433] sm:p-6"
                 initial={reduce ? false : { opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}

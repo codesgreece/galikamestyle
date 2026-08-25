@@ -87,17 +87,17 @@ export function LevelTest() {
             60-second Language Test
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 max-w-3xl text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18]">
+        <h2 className="section-title font-display max-w-3xl">
           <DropWords text="Δεν ξέρεις από πού να ξεκινήσεις;" />
         </h2>
         <Reveal delay={0.08}>
-          <p className="mt-4 max-w-xl text-cream/70">
+          <p className="mt-3 max-w-xl text-cream/70 sm:mt-4">
             Κάνε το 60-second Language Test. Χωρίς άγχος. Δεν κρατάμε βαθμούς.
             Ακόμα. 😏
           </p>
         </Reveal>
 
-        <div className="mx-auto mt-12 max-w-2xl rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#3d8bff] sm:p-8">
+        <div className="section-stack mx-auto max-w-2xl rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#3d8bff] sm:p-7 lg:p-6">
           <AnimatePresence mode="wait">
             {phase === "intro" ? (
               <motion.div

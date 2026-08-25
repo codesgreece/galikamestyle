@@ -75,7 +75,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-cream"
+      className="relative isolate min-h-[100svh] overflow-hidden bg-navy text-cream lg:min-h-[min(100svh,44rem)]"
       onMouseMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect();
         mx.set(((e.clientX - r.left) / r.width - 0.5) * 24);
@@ -128,12 +128,12 @@ export function Hero() {
 
       <ToastBubble message={toast ?? ""} show={Boolean(toast)} />
 
-      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-9 pb-20 pt-[7.75rem] sm:gap-10 sm:justify-center sm:pb-24 sm:pt-32 md:gap-12 md:py-36">
+      <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] sm:justify-center sm:gap-7 sm:py-24 lg:min-h-[min(100svh,44rem)] lg:gap-5 lg:py-16">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
           Γερμανικά με Στυλ
         </p>
 
-        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal sm:text-[clamp(2.35rem,5.2vw,4.8rem)]">
+        <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal sm:text-[clamp(2.25rem,4.2vw,3.5rem)]">
           <span className="mb-3.5 block sm:mb-2.5">Μάθε Γερμανικά.</span>
           <span className="mb-6 block sm:mb-4">Μάθε Αγγλικά.</span>
           <span className="block">

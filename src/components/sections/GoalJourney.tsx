@@ -28,17 +28,17 @@ export function GoalJourney() {
             Personalized journey
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 max-w-3xl text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18]">
+        <h2 className="section-title font-display max-w-3xl">
           <DropWords text="Γιατί είσαι εδώ;" />{" "}
           <span aria-hidden>👀</span>
         </h2>
         <Reveal delay={0.08}>
-          <p className="mt-4 max-w-xl text-base text-ink/70 sm:text-lg">
+          <p className="mt-3 max-w-xl text-base text-ink/70 sm:mt-4 sm:text-lg">
             Διάλεξε τον στόχο σου και πάμε από εκεί.
           </p>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+        <div className="section-stack grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-3">
           {goalOptions.map((goal, i) => {
             const isActive = picked === goal.id;
             const dimmed = picked !== null && !isActive;
@@ -49,7 +49,7 @@ export function GoalJourney() {
                 onClick={() => choose(goal.id)}
                 aria-pressed={isActive}
                 className={cn(
-                  "focus-ring rounded-[1.75rem] border-[3px] border-ink p-6 text-left shadow-[6px_6px_0_#1a1433] transition sm:p-7",
+                  "focus-ring rounded-[1.75rem] border-[3px] border-ink p-5 text-left shadow-[6px_6px_0_#1a1433] transition sm:p-6 lg:p-5",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 initial={reduce ? false : { opacity: 0, y: 18 }}
@@ -71,12 +71,12 @@ export function GoalJourney() {
                 >
                   {goal.emoji} Pick
                 </span>
-                <h3 className="font-display mt-4 text-2xl sm:text-3xl">
+                <h3 className="font-display mt-3 text-2xl sm:text-3xl lg:mt-4 lg:text-xl xl:text-2xl">
                   {goal.emoji} {goal.title}
                 </h3>
                 <p
                   className={cn(
-                    "mt-3 text-sm leading-relaxed sm:text-base",
+                    "mt-2 text-sm leading-relaxed sm:mt-3 sm:text-base lg:text-sm",
                     isActive ? "text-cream/75" : "text-ink/65",
                   )}
                 >
@@ -91,17 +91,17 @@ export function GoalJourney() {
           {active ? (
             <motion.div
               key={active.id}
-              className="mt-8 rounded-[1.75rem] border-[3px] border-ink bg-yellow p-6 shadow-[8px_8px_0_#1a1433] sm:p-8"
+              className="mt-6 rounded-[1.75rem] border-[3px] border-ink bg-yellow p-5 shadow-[8px_8px_0_#1a1433] sm:mt-8 sm:p-6 lg:p-5"
               initial={{ opacity: 0, y: 16, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 8 }}
             >
-              <p className="font-display text-2xl sm:text-3xl">
+              <p className="font-display text-2xl lg:text-2xl">
                 {active.messageTitle}
               </p>
-              <p className="mt-3 max-w-2xl text-ink/80">{active.messageBody}</p>
+              <p className="mt-2 max-w-2xl text-ink/80 sm:mt-3">{active.messageBody}</p>
               <p className="mt-2 text-sm font-bold text-ink/60">{active.nextHint}</p>
-              <div className="mt-6">
+              <div className="mt-4 sm:mt-5">
                 <Button
                   variant="primary"
                   onClick={() => scrollToId("level-test")}

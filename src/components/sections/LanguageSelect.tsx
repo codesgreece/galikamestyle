@@ -47,11 +47,11 @@ export function LanguageSelect() {
             Character select
           </p>
         </Reveal>
-        <h2 className="font-display mt-4 max-w-3xl text-[clamp(1.9rem,6.5vw,3.6rem)] leading-[1.18] sm:leading-[1.12]">
+        <h2 className="section-title font-display max-w-3xl">
           <DropWords text="Ποια γλώσσα θα κατακτήσεις πρώτα;" />
         </h2>
 
-        <div className="mt-14 grid gap-7 lg:grid-cols-2">
+        <div className="section-stack grid gap-5 lg:grid-cols-2 lg:gap-6">
           {languages.map((lang) => {
             const isActive = active === lang.id;
             return (
@@ -61,7 +61,7 @@ export function LanguageSelect() {
                 onClick={() => pick(lang.id)}
                 onMouseEnter={() => setActive(lang.id)}
                 className={cn(
-                  "pop-card relative overflow-hidden rounded-3xl p-7 text-left md:p-9",
+                  "pop-card relative overflow-hidden rounded-3xl p-6 text-left sm:p-7 lg:p-6",
                   isActive ? "bg-navy text-cream" : "bg-paper text-ink",
                 )}
                 whileTap={{ scale: 0.985 }}
@@ -71,12 +71,12 @@ export function LanguageSelect() {
                     <span className="text-4xl" aria-hidden>
                       {lang.flag}
                     </span>
-                    <h3 className="font-display mt-4 text-3xl leading-tight md:text-5xl">
+                    <h3 className="font-display mt-3 text-3xl leading-tight lg:text-4xl">
                       {lang.title}
                     </h3>
                     <p
                       className={cn(
-                        "mt-4 max-w-sm leading-relaxed",
+                        "mt-3 max-w-sm leading-relaxed lg:mt-2",
                         isActive ? "text-cream/75" : "text-ink/65",
                       )}
                     >
@@ -96,7 +96,7 @@ export function LanguageSelect() {
                 <AnimatePresence>
                   {isActive ? (
                     <motion.div
-                      className="mt-8 space-y-4"
+                      className="mt-5 space-y-3 lg:mt-4"
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
@@ -126,7 +126,7 @@ export function LanguageSelect() {
                       </div>
                     </motion.div>
                   ) : (
-                    <p className="mt-8 text-sm font-bold text-muted">
+                    <p className="mt-5 text-sm font-bold text-muted lg:mt-4">
                       Tap / hover για unlock →
                     </p>
                   )}

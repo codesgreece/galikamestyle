@@ -127,10 +127,31 @@ select {
   max-width: 18ch;
 }
 
+.section-stack {
+  margin-top: 2.5rem;
+}
+
 @media (min-width: 768px) {
   .section-title {
     max-width: 22ch;
     line-height: 1.12;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-pad {
+    padding-block: 3.25rem;
+  }
+
+  .section-title {
+    margin-top: 0.5rem;
+    max-width: 28ch;
+    font-size: 2.35rem;
+    line-height: 1.15;
+  }
+
+  .section-stack {
+    margin-top: 1.75rem;
   }
 }
 

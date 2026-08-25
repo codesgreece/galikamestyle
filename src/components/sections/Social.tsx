@@ -8,7 +8,7 @@ import { siteConfig } from "@/lib/config";
 export function Social() {
   return (
     <section className="border-t-[3px] border-ink bg-paper">
-      <div className="container-shell py-14 md:py-16">
+      <div className="container-shell py-10 lg:py-12">
         <Reveal>
           <a
             href={siteConfig.facebook.href}
