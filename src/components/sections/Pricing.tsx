@@ -1,176 +1,110 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
-import { Reveal, TextReveal } from "@/components/ui/Reveal";
+import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/providers/ContactProvider";
 import { siteConfig } from "@/lib/config";
-
-const plans = [
-  {
-    id: "private" as const,
-    title: "Ιδιαίτερα",
-    offer: siteConfig.pricing.private.offer,
-    regular: siteConfig.pricing.private.regular,
-    meta: `${siteConfig.pricing.private.hours} διδακτικές ώρες τον μήνα`,
-    ideal: [
-      "Προσωπικό ρυθμό μάθησης",
-      "Απόλυτη προσοχή στις ανάγκες του μαθητή",
-      "Εξατομικευμένη προετοιμασία",
-      "Στοχευμένη πρόοδο",
-    ],
-    cta: "Επικοινώνησε τώρα",
-    featured: true,
-  },
-  {
-    id: "group" as const,
-    title: "Ομαδικά",
-    offer: siteConfig.pricing.group.offer,
-    regular: siteConfig.pricing.group.regular,
-    meta: `${siteConfig.pricing.group.hours} διδακτικές ώρες τον μήνα · Ομάδες ${siteConfig.pricing.group.size} ατόμων`,
-    ideal: [
-      "Διαδραστική μάθηση",
-      "Συνεργασία",
-      "Σταθερό πρόγραμμα",
-      "Οικονομικότερη επιλογή",
-    ],
-    cta: "Βρες τη θέση σου",
-    featured: false,
-  },
-];
 
 export function Pricing() {
   const { openContact } = useContactModal();
 
   return (
-    <section id="pricing" className="relative bg-cream-deep text-ink">
+    <section id="pricing" className="relative bg-cream">
       <div className="container-shell section-pad">
-        <div className="max-w-3xl">
-          <Reveal>
-            <p className="text-[0.72rem] uppercase tracking-[0.28em] text-wine">
-              Προγράμματα & Τιμές
+        <Reveal>
+          <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-coral">
+            Learning modes
+          </p>
+        </Reveal>
+        <h2 className="font-display mt-3 max-w-3xl text-[clamp(2rem,5vw,3.8rem)] leading-[1.05]">
+          <DropWords text="Διάλεξε το δικό σου learning mode." />
+        </h2>
+        <Reveal delay={0.1}>
+          <p className="mt-4 text-ink/65">Ποιο είναι το δικό σου στυλ;</p>
+        </Reveal>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <motion.article
+            className="group relative overflow-hidden rounded-[2rem] border-[3px] border-ink bg-navy p-6 text-cream shadow-[10px_10px_0_#ff5d7a] md:p-8"
+            whileHover={{ y: -6 }}
+          >
+            <span className="absolute right-5 top-5 rotate-[-8deg] rounded-full border-2 border-ink bg-yellow px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-ink">
+              Προσφορά
+            </span>
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-yellow">
+              Solo Mode
             </p>
-          </Reveal>
-          <TextReveal
-            text="Διάλεξε τον τρόπο"
-            className="font-display mt-5 text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.05]"
-          />
-          <TextReveal
-            text="που σου ταιριάζει."
-            className="font-display mt-1 text-[clamp(2.2rem,5vw,4.2rem)] leading-[1.05] text-wine"
-            delay={0.12}
-          />
-        </div>
-
-        <div className="mt-14 grid gap-6 lg:grid-cols-2">
-          {plans.map((plan, i) => (
-            <motion.article
-              key={plan.id}
-              className={
-                plan.featured
-                  ? "relative overflow-hidden border border-wine/20 bg-charcoal p-7 text-cream shadow-[0_30px_80px_rgba(20,10,12,0.28)] md:p-10"
-                  : "relative overflow-hidden border border-ink/10 bg-paper p-7 shadow-[0_24px_60px_rgba(40,24,18,0.1)] md:p-10"
-              }
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-8%" }}
-              transition={{ delay: i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <motion.div
-                className={
-                  plan.featured
-                    ? "absolute right-6 top-6 rotate-[-8deg] border border-gold/40 bg-wine px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.24em] text-gold"
-                    : "absolute right-6 top-6 rotate-[-8deg] border border-wine/25 bg-cream px-3 py-1.5 text-[0.68rem] uppercase tracking-[0.24em] text-wine"
-                }
-                animate={{ y: [0, -4, 0] }}
-                transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-              >
-                Προσφορά
-              </motion.div>
-
-              <p className="text-xs uppercase tracking-[0.24em] opacity-55">{plan.title}</p>
-              <div className="mt-8 flex items-end gap-4">
-                <motion.p
-                  className="font-display text-6xl leading-none md:text-7xl"
-                  initial={{ opacity: 0.4 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                >
-                  {plan.offer}€
-                </motion.p>
-                <div className="pb-2">
-                  <p
-                    className={
-                      plan.featured
-                        ? "text-sm text-cream/40 line-through"
-                        : "text-sm text-ink/40 line-through"
-                    }
-                  >
-                    {plan.regular}€
-                  </p>
-                  <p
-                    className={
-                      plan.featured
-                        ? "text-xs uppercase tracking-[0.16em] text-gold"
-                        : "text-xs uppercase tracking-[0.16em] text-wine"
-                    }
-                  >
-                    / μήνα
-                  </p>
-                </div>
-              </div>
-
-              <p
-                className={
-                  plan.featured
-                    ? "mt-5 text-sm text-cream/60"
-                    : "mt-5 text-sm text-ink/60"
-                }
-              >
-                {plan.meta}
+            <h3 className="font-display mt-3 text-4xl">Ιδιαίτερα</h3>
+            <p className="mt-2 text-cream/65">8 ώρες / μήνα</p>
+            <div className="mt-6 flex items-end gap-3">
+              <p className="font-display text-6xl text-yellow">
+                {siteConfig.pricing.private.offer}€
               </p>
+              <p className="pb-2 text-cream/40 line-through">
+                {siteConfig.pricing.private.regular}€
+              </p>
+            </div>
+            <p className="mt-5 max-w-sm text-sm text-cream/75">
+              Ένας μαθητής. Ένα πρόγραμμα φτιαγμένο στα μέτρα του.
+            </p>
+            <div className="mt-8">
+              <Button
+                variant="yellow"
+                onClick={() => openContact({ format: "private", interest: "german" })}
+              >
+                Ξεκινάμε →
+              </Button>
+            </div>
+            <div className="pointer-events-none absolute -bottom-8 -right-8 h-32 w-32 rounded-full bg-coral/30 blur-2xl transition group-hover:scale-150" />
+          </motion.article>
 
-              <div
-                className={
-                  plan.featured
-                    ? "my-8 h-px bg-gradient-to-r from-gold/50 to-transparent"
-                    : "my-8 h-px bg-gradient-to-r from-wine/40 to-transparent"
-                }
-              />
-
-              <p className="text-xs uppercase tracking-[0.2em] opacity-50">Ιδανικό για</p>
-              <ul className="mt-4 space-y-3">
-                {plan.ideal.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm md:text-base">
-                    <Check
-                      size={16}
-                      className={plan.featured ? "mt-1 text-gold" : "mt-1 text-wine"}
-                    />
-                    <span className={plan.featured ? "text-cream/80" : "text-ink/75"}>
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              <div className="mt-10">
-                <Button
-                  variant={plan.featured ? "light" : "primary"}
-                  className="w-full sm:w-auto"
-                  magnetic
-                  onClick={() =>
-                    openContact({
-                      format: plan.id,
-                      interest: "german",
-                    })
-                  }
+          <motion.article
+            className="group relative overflow-hidden rounded-[2rem] border-[3px] border-ink bg-paper p-6 shadow-[10px_10px_0_#3d8bff] md:p-8"
+            whileHover={{ y: -6 }}
+          >
+            <span className="absolute right-5 top-5 rotate-[8deg] rounded-full border-2 border-ink bg-coral px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-paper">
+              Προσφορά
+            </span>
+            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-blue">
+              Team Mode
+            </p>
+            <h3 className="font-display mt-3 text-4xl">Ομαδικά</h3>
+            <p className="mt-2 text-ink/60">
+              3–4 άτομα · 8 ώρες / μήνα
+            </p>
+            <div className="mt-6 flex items-end gap-3">
+              <p className="font-display text-6xl text-blue">
+                {siteConfig.pricing.group.offer}€
+              </p>
+              <p className="pb-2 text-ink/35 line-through">
+                {siteConfig.pricing.group.regular}€
+              </p>
+            </div>
+            <p className="mt-5 max-w-sm text-sm text-ink/70">
+              Μαθαίνεις μαζί. Προχωράτε μαζί. Και ναι, είναι πιο fun.
+            </p>
+            <div className="mt-8">
+              <Button
+                variant="secondary"
+                onClick={() => openContact({ format: "group", interest: "german" })}
+              >
+                Μπαίνω στην ομάδα →
+              </Button>
+            </div>
+            <div className="mt-6 flex -space-x-2">
+              {[0, 1, 2, 3].map((i) => (
+                <motion.span
+                  key={i}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border-2 border-ink bg-yellow text-xs font-extrabold"
+                  animate={{ y: [0, -4, 0] }}
+                  transition={{ duration: 1.8, delay: i * 0.12, repeat: Infinity }}
                 >
-                  {plan.cta}
-                </Button>
-              </div>
-            </motion.article>
-          ))}
+                  {i + 1}
+                </motion.span>
+              ))}
+            </div>
+          </motion.article>
         </div>
       </div>
     </section>

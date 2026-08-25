@@ -7,12 +7,6 @@ import type { ContactPreset } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/config";
 
-type ContactModalProps = {
-  open: boolean;
-  onClose: () => void;
-  preset?: Partial<ContactPreset>;
-};
-
 type FormState = {
   name: string;
   phone: string;
@@ -22,7 +16,7 @@ type FormState = {
   message: string;
 };
 
-function createFormState(preset?: Partial<ContactPreset>): FormState {
+function createForm(preset?: Partial<ContactPreset>): FormState {
   return {
     name: "",
     phone: "",
@@ -33,7 +27,15 @@ function createFormState(preset?: Partial<ContactPreset>): FormState {
   };
 }
 
-export function ContactModal({ open, onClose, preset }: ContactModalProps) {
+export function ContactModal({
+  open,
+  onClose,
+  preset,
+}: {
+  open: boolean;
+  onClose: () => void;
+  preset?: Partial<ContactPreset>;
+}) {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -51,7 +53,7 @@ export function ContactModal({ open, onClose, preset }: ContactModalProps) {
     <AnimatePresence>
       {open ? (
         <ContactModalContent
-          key={`${preset?.interest ?? "german"}-${preset?.format ?? "private"}`}
+          key={`${preset?.interest}-${preset?.format}`}
           onClose={onClose}
           preset={preset}
         />
@@ -68,17 +70,12 @@ function ContactModalContent({
   preset?: Partial<ContactPreset>;
 }) {
   const titleId = useId();
-  const [form, setForm] = useState<FormState>(() => createFormState(preset));
+  const [form, setForm] = useState(() => createForm(preset));
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    const payload = {
-      ...form,
-      source: siteConfig.name,
-      createdAt: new Date().toISOString(),
-    };
-    console.info("[contact-form]", payload);
+    console.info("[contact-form]", { ...form, source: siteConfig.name });
     setSubmitted(true);
   };
 
@@ -92,58 +89,56 @@ function ContactModalContent({
       <button
         type="button"
         aria-label="Κλείσιμο φόρμας"
-        className="absolute inset-0 bg-ink/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-navy/70 backdrop-blur-sm"
         onClick={onClose}
       />
       <motion.div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className="relative z-10 max-h-[92vh] w-full overflow-y-auto border border-cream/10 bg-charcoal text-cream shadow-[0_40px_100px_rgba(0,0,0,0.55)] sm:max-w-xl sm:rounded-sm"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 24 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        className="relative z-10 max-h-[92vh] w-full overflow-y-auto border-[3px] border-ink bg-cream shadow-[10px_10px_0_#1a1433] sm:max-w-xl sm:rounded-3xl"
+        initial={{ opacity: 0, y: 40, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 20 }}
       >
-        <div className="flex items-start justify-between gap-4 border-b border-cream/10 px-6 py-5 sm:px-8">
+        <div className="flex items-start justify-between gap-4 border-b-[3px] border-ink px-6 py-5">
           <div>
-            <p className="text-[0.7rem] uppercase tracking-[0.28em] text-gold">
-              Επικοινωνία
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-coral">
+              Πάμε να γνωριστούμε
             </p>
-            <h2 id={titleId} className="font-display mt-2 text-3xl text-cream">
-              Ας ξεκινήσουμε μαζί
+            <h2 id={titleId} className="font-display mt-1 text-3xl">
+              Ένα μήνυμα μακριά
             </h2>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="focus-ring rounded-sm p-2 text-cream/70 transition hover:text-cream"
+            className="focus-ring rounded-xl border-2 border-ink bg-yellow p-2"
             aria-label="Κλείσιμο"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
 
         {submitted ? (
-          <div className="space-y-4 px-6 py-10 sm:px-8">
-            <p className="font-display text-3xl text-cream">Ευχαριστούμε!</p>
-            <p className="max-w-md text-cream/70">
-              Το μήνυμά σου καταχωρήθηκε. Η Βιργινία θα επικοινωνήσει μαζί σου
-              σύντομα. Μπορείς επίσης να καλέσεις ή να στείλεις WhatsApp άμεσα.
+          <div className="space-y-4 px-6 py-10">
+            <p className="font-display text-3xl">Ωραίααα! 🎉</p>
+            <p className="text-ink/70">
+              Το μήνυμα καταχωρήθηκε. Η Βιργινία θα επικοινωνήσει σύντομα.
             </p>
-            <Button variant="light" onClick={onClose}>
+            <Button variant="yellow" onClick={onClose}>
               Κλείσιμο
             </Button>
           </div>
         ) : (
-          <form onSubmit={onSubmit} className="space-y-5 px-6 py-7 sm:px-8">
+          <form onSubmit={onSubmit} className="space-y-4 px-6 py-6">
             <Field
               label="Ονοματεπώνυμο"
               required
               value={form.name}
               onChange={(v) => setForm((s) => ({ ...s, name: v }))}
             />
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2">
               <Field
                 label="Τηλέφωνο"
                 type="tel"
@@ -159,60 +154,54 @@ function ContactModalContent({
                 onChange={(v) => setForm((s) => ({ ...s, email: v }))}
               />
             </div>
-
             <fieldset>
-              <legend className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-light">
+              <legend className="mb-2 text-xs font-bold uppercase tracking-[0.16em]">
                 Ενδιαφέρομαι για
               </legend>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <Choice
                   active={form.interest === "german"}
-                  onClick={() => setForm((s) => ({ ...s, interest: "german" }))}
                   label="Γερμανικά"
+                  onClick={() => setForm((s) => ({ ...s, interest: "german" }))}
                 />
                 <Choice
                   active={form.interest === "english"}
-                  onClick={() => setForm((s) => ({ ...s, interest: "english" }))}
                   label="Αγγλικά"
+                  onClick={() => setForm((s) => ({ ...s, interest: "english" }))}
                 />
               </div>
             </fieldset>
-
             <fieldset>
-              <legend className="mb-3 text-xs uppercase tracking-[0.2em] text-muted-light">
-                Τρόπος μαθημάτων
+              <legend className="mb-2 text-xs font-bold uppercase tracking-[0.16em]">
+                Mode
               </legend>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-2">
                 <Choice
                   active={form.format === "private"}
+                  label="Solo"
                   onClick={() => setForm((s) => ({ ...s, format: "private" }))}
-                  label="Ιδιαίτερα"
                 />
                 <Choice
                   active={form.format === "group"}
+                  label="Team"
                   onClick={() => setForm((s) => ({ ...s, format: "group" }))}
-                  label="Ομαδικά"
                 />
               </div>
             </fieldset>
-
             <label className="block space-y-2">
-              <span className="text-xs uppercase tracking-[0.2em] text-muted-light">
+              <span className="text-xs font-bold uppercase tracking-[0.16em]">
                 Μήνυμα
               </span>
               <textarea
-                rows={4}
+                rows={3}
                 value={form.message}
-                onChange={(e) =>
-                  setForm((s) => ({ ...s, message: e.target.value }))
-                }
-                className="focus-ring w-full resize-y border border-cream/15 bg-ink/40 px-4 py-3 text-cream placeholder:text-cream/30"
-                placeholder="Πες μας λίγα λόγια για το επίπεδό σου ή τον στόχο σου..."
+                onChange={(e) => setForm((s) => ({ ...s, message: e.target.value }))}
+                className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3"
+                placeholder="Πες μας τον στόχο σου..."
               />
             </label>
-
-            <Button type="submit" variant="primary" className="w-full" magnetic>
-              Αποστολή μηνύματος
+            <Button type="submit" variant="primary" className="w-full">
+              Αποστολή →
             </Button>
           </form>
         )}
@@ -236,15 +225,13 @@ function Field({
 }) {
   return (
     <label className="block space-y-2">
-      <span className="text-xs uppercase tracking-[0.2em] text-muted-light">
-        {label}
-      </span>
+      <span className="text-xs font-bold uppercase tracking-[0.16em]">{label}</span>
       <input
         type={type}
         required={required}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="focus-ring w-full border border-cream/15 bg-ink/40 px-4 py-3 text-cream placeholder:text-cream/30"
+        className="focus-ring w-full rounded-2xl border-2 border-ink bg-paper px-4 py-3"
       />
     </label>
   );
@@ -264,10 +251,8 @@ function Choice({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`focus-ring border px-4 py-3 text-sm transition ${
-        active
-          ? "border-gold/50 bg-wine/40 text-cream"
-          : "border-cream/15 bg-transparent text-cream/70 hover:border-cream/30"
+      className={`focus-ring rounded-2xl border-2 border-ink px-3 py-3 text-sm font-bold transition ${
+        active ? "bg-yellow shadow-[3px_3px_0_#1a1433]" : "bg-paper"
       }`}
     >
       {label}

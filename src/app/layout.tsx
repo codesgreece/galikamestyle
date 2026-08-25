@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { EB_Garamond, Manrope } from "next/font/google";
+import { Manrope, Syne } from "next/font/google";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -9,9 +9,10 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const ebGaramond = EB_Garamond({
-  variable: "--font-cormorant",
+const syne = Syne({
+  variable: "--font-syne",
   subsets: ["latin", "greek"],
+  weight: ["500", "600", "700", "800"],
   display: "swap",
 });
 
@@ -29,7 +30,6 @@ export const metadata: Metadata = {
     "TELC",
     "ΚΠΓ",
     "DaF",
-    "ιδιαίτερα μαθήματα",
   ],
   authors: [{ name: siteConfig.teacher }],
   openGraph: {
@@ -39,14 +39,10 @@ export const metadata: Metadata = {
     locale: "el_GR",
     siteName: siteConfig.name,
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0c0b0a",
+  themeColor: "#12103a",
   width: "device-width",
   initialScale: 1,
 };
@@ -57,10 +53,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="el" className={`${manrope.variable} ${ebGaramond.variable}`}>
-      <body className="min-h-screen bg-cream text-ink antialiased">
-        {children}
-      </body>
+    <html lang="el" className={`${manrope.variable} ${syne.variable}`}>
+      <body className="min-h-screen bg-cream text-ink antialiased">{children}</body>
     </html>
   );
 }

@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Γερμανικά με Στυλ",
-  tagline: "Μάθε Γερμανικά και Αγγλικά με αυτοπεποίθηση.",
+  tagline: "Εδώ δεν θα βαρεθείς να μάθεις γλώσσες.",
   teacher: "Βιργινία Πανάκη",
-  url: "https://germanikamesstyl.gr",
+  url: "https://galikamestyle.vercel.app",
   phone: {
     display: "698 820 9141",
     href: "tel:+306988209141",
@@ -21,7 +21,6 @@ export const siteConfig = {
   },
   facebook: {
     label: "Γερμανικά με Στυλ",
-    // Replace with the real Facebook page URL when ready
     href: "https://www.facebook.com/",
   },
   pricing: {
@@ -41,9 +40,9 @@ export const siteConfig = {
 
 export const navLinks = [
   { href: "#hero", label: "Αρχική" },
+  { href: "#languages", label: "Γλώσσες" },
+  { href: "#levels", label: "Επίπεδα" },
   { href: "#about", label: "Η Βιργινία" },
-  { href: "#levels", label: "Μαθήματα" },
-  { href: "#certificates", label: "Πιστοποιήσεις" },
-  { href: "#pricing", label: "Τιμές" },
-  { href: "#contact", label: "Επικοινωνία" },
+  { href: "#pricing", label: "Modes" },
+  { href: "#contact", label: "Πάμε!" },
 ] as const;

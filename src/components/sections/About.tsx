@@ -1,110 +1,97 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Reveal, TextReveal } from "@/components/ui/Reveal";
-import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { siteConfig } from "@/lib/config";
 
-const stats = [
-  {
-    value: "2",
-    label: "Γλώσσες",
-    detail: "Γερμανικά & Αγγλικά",
-  },
-  {
-    value: "A1→C1",
-    label: "Επίπεδα",
-    detail: "Διδασκαλία όλων των επιπέδων",
-  },
-  {
-    value: "C2",
-    label: "Πιστοποιήσεις",
-    detail: "Υψηλό επίπεδο πιστοποιήσεων",
-  },
-  {
-    value: "10+",
-    label: "Ηλικία",
-    detail: "Για παιδιά από 10 ετών και άνω",
-  },
+const badges = [
+  { text: "Goethe C2", className: "bg-yellow -rotate-6 top-4 -left-3 md:-left-8" },
+  { text: "NOCN C2", className: "bg-blue text-paper rotate-6 top-8 -right-2 md:-right-8" },
+  { text: "10+", className: "bg-coral text-paper -rotate-3 bottom-16 -left-2 md:-left-6" },
+  { text: "A1 → C1", className: "bg-green rotate-3 bottom-8 -right-2 md:-right-6" },
 ];
 
 export function About() {
   return (
-    <section id="about" className="relative bg-cream text-ink">
+    <section id="about" className="relative bg-paper">
       <div className="container-shell section-pad">
-        <div className="grid items-start gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <div>
-            <Reveal>
-              <p className="text-[0.72rem] uppercase tracking-[0.28em] text-wine">
-                Η Βιργινία
-              </p>
-            </Reveal>
-            <TextReveal
-              text="Η γλώσσα θέλει γνώση."
-              className="font-display mt-5 text-[clamp(2.2rem,5vw,4rem)] leading-[1.05]"
-            />
-            <TextReveal
-              text="Η διδασκαλία θέλει τρόπο."
-              className="font-display mt-1 text-[clamp(2.2rem,5vw,4rem)] leading-[1.05] text-wine"
-              delay={0.15}
-            />
-            <Reveal delay={0.2} className="mt-8 max-w-xl">
-              <p className="text-lg leading-relaxed text-ink/70">
-                Καθηγήτρια Γερμανικών και Αγγλικών με εξειδίκευση στη διδασκαλία
-                μαθητών από 10 ετών και άνω και στην προετοιμασία για
-                αναγνωρισμένες εξετάσεις πιστοποίησης.
-              </p>
-            </Reveal>
-          </div>
-
-          <Reveal delay={0.15}>
-            <div className="relative">
-              <div className="absolute -inset-3 -z-10 bg-[radial-gradient(circle_at_30%_20%,rgba(110,36,53,0.12),transparent_55%)]" />
-              <figure className="depth-card-light overflow-hidden">
-                <div className="relative aspect-[4/5] bg-[linear-gradient(145deg,#1f1c19_0%,#3a242c_45%,#6e2435_100%)]">
-                  <div className="absolute inset-0 opacity-40 mix-blend-soft-light bg-[radial-gradient(circle_at_70%_20%,rgba(196,165,116,0.45),transparent_40%)]" />
-                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <div className="glass-panel rounded-sm px-5 py-4">
-                      <p className="text-[0.68rem] uppercase tracking-[0.24em] text-gold">
-                        Portrait
+        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr]">
+          <Reveal>
+            <div className="relative mx-auto max-w-md">
+              <div className="pop-card overflow-hidden rounded-[2rem] bg-navy">
+                <div className="relative aspect-[4/5] bg-[linear-gradient(145deg,#1c1850,#3d8bff_55%,#ff5d7a)]">
+                  <div className="absolute inset-x-0 bottom-0 p-5">
+                    <div className="rounded-2xl border-2 border-ink bg-cream p-4 text-ink shadow-[5px_5px_0_#ffe14a]">
+                      <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-muted">
+                        Portrait placeholder
                       </p>
-                      <p className="font-display mt-2 text-3xl text-cream">
-                        {siteConfig.teacher}
-                      </p>
-                      <p className="mt-1 text-sm text-cream/60">
-                        Αντικατέστησε εύκολα αυτό το frame με τη φωτογραφία σου.
+                      <p className="font-display mt-1 text-3xl">{siteConfig.teacher}</p>
+                      <p className="mt-1 text-sm text-ink/65">
+                        Άλλαξε εύκολα με τη φωτογραφία σου.
                       </p>
                     </div>
                   </div>
-                  <div className="absolute right-5 top-5 h-16 w-16 border border-gold/40" />
-                  <div className="absolute right-8 top-8 h-16 w-16 border border-cream/20" />
                 </div>
-              </figure>
+              </div>
+              {badges.map((b) => (
+                <motion.span
+                  key={b.text}
+                  className={`sticker absolute rounded-full px-3 py-1.5 text-xs font-extrabold ${b.className}`}
+                  animate={{ y: [0, -6, 0] }}
+                  transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  {b.text}
+                </motion.span>
+              ))}
             </div>
           </Reveal>
-        </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, i) => (
-            <motion.article
-              key={stat.label}
-              className="depth-card-light p-6"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-8%" }}
-              transition={{ delay: i * 0.08, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <p className="font-display text-4xl text-wine md:text-5xl">
-                <AnimatedCounter value={stat.value} />
+          <div>
+            <Reveal>
+              <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-coral">
+                Meet the teacher
               </p>
-              <p className="mt-3 text-xs uppercase tracking-[0.2em] text-ink/45">
-                {stat.label}
+            </Reveal>
+            <h2 className="font-display mt-3 text-[clamp(2rem,5vw,3.6rem)] leading-[1.05]">
+              <DropWords text="Η δασκάλα πίσω από το «Γερμανικά με Στυλ»." />
+            </h2>
+            <Reveal delay={0.1}>
+              <p className="mt-5 text-lg text-ink/70">
+                Όχι βαρετό βιογραφικό. Απλά μια καθηγήτρια που πιστεύει ότι η
+                γλώσσα μαθαίνεται καλύτερα όταν έχει ρυθμό, νόημα και λίγο στυλ.
               </p>
-              <p className="mt-2 text-sm leading-relaxed text-ink/70">{stat.detail}</p>
-            </motion.article>
-          ))}
+            </Reveal>
+
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <InfoCard title="🎓 Γερμανικά" text="ÖSD • ΚΠΓ • Goethe C2" tone="bg-yellow" />
+              <InfoCard title="🇬🇧 Αγγλικά" text="NOCN C2" tone="bg-blue text-paper" />
+              <InfoCard
+                title="🎯 Mission"
+                text="Να κάνουμε τη γλώσσα λιγότερο «διάβασμα» και περισσότερο εμπειρία."
+                tone="bg-coral text-paper"
+              />
+              <InfoCard title="👦👧 Για ποιους;" text="Παιδιά από 10 ετών και άνω." tone="bg-green" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function InfoCard({
+  title,
+  text,
+  tone,
+}: {
+  title: string;
+  text: string;
+  tone: string;
+}) {
+  return (
+    <div className={`rounded-3xl border-[3px] border-ink p-4 shadow-[5px_5px_0_#1a1433] ${tone}`}>
+      <p className="font-display text-xl">{title}</p>
+      <p className="mt-2 text-sm font-medium opacity-90">{text}</p>
+    </div>
   );
 }
