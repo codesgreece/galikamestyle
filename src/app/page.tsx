@@ -26,15 +26,22 @@ export default function HomePage() {
     "pending",
   );
   const [reveal, setReveal] = useState(false);
-  const cinematic = kind === "full" || kind === "pending";
+  const [portalOn, setPortalOn] = useState(true);
+  const cinematic = portalOn && (kind === "full" || kind === "pending");
 
   return (
     <JourneyProvider>
       <ContactProvider>
         <WordPortal
-          onKind={setKind}
+          onKind={(next) => {
+            setKind(next);
+            if (next === "skip") setPortalOn(false);
+          }}
           onEnter={() => setReveal(true)}
-          onComplete={() => setReveal(true)}
+          onComplete={() => {
+            setReveal(true);
+            setPortalOn(false);
+          }}
         />
         <a
           href="#main"
