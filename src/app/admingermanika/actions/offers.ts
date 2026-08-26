@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireApiSession } from "@/lib/auth/session";
 import { CACHE_TAGS } from "@/lib/constants";
@@ -14,7 +14,7 @@ function parseOptionalDate(value?: string | null) {
 }
 
 function revalidateOffers() {
-  revalidateTag(CACHE_TAGS.offers, "max");
+  updateTag(CACHE_TAGS.offers);
   revalidatePath("/");
   revalidatePath("/admingermanika/offers");
   revalidatePath("/admingermanika/dashboard");

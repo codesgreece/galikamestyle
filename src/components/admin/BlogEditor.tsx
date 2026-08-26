@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { slugify } from "@/lib/crypto";
+import { slugify } from "@/lib/slugify";
 import {
   deletePostAction,
   savePostAction,

@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireApiSession } from "@/lib/auth/session";
 import { CACHE_TAGS } from "@/lib/constants";
@@ -51,7 +51,7 @@ export async function saveContentAction(
     meta: { keys: entries.map(([k]) => k) },
   });
 
-  revalidateTag(CACHE_TAGS.content, "max");
+  updateTag(CACHE_TAGS.content);
   revalidatePath("/");
   revalidatePath("/admingermanika/content");
   revalidatePath("/admingermanika/dashboard");

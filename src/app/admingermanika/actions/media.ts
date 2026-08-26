@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { requireApiSession } from "@/lib/auth/session";
 import { CACHE_TAGS } from "@/lib/constants";
 import { mediaAltSchema, type ActionResult } from "@/validations";
@@ -12,7 +12,7 @@ import {
 import { logActivity } from "@/services/activity";
 
 function revalidateMedia() {
-  revalidateTag(CACHE_TAGS.media, "max");
+  updateTag(CACHE_TAGS.media);
   revalidatePath("/admingermanika/media");
   revalidatePath("/admingermanika/blog");
   revalidatePath("/admingermanika/dashboard");

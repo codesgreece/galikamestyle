@@ -1,49 +1,39 @@
-import { unstable_cache } from "next/cache";
 import type { PostStatus } from "@prisma/client";
 import { prisma } from "@/lib/db";
-import { CACHE_TAGS } from "@/lib/constants";
 
-export const getPublishedPosts = unstable_cache(
-  async () => {
-    try {
-      return await prisma.blogPost.findMany({
-        where: { status: "PUBLISHED" },
-        orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
-        select: {
-          id: true,
-          title: true,
-          slug: true,
-          excerpt: true,
-          coverImage: true,
-          coverAlt: true,
-          publishedAt: true,
-          updatedAt: true,
-        },
-      });
-    } catch {
-      return [];
-    }
-  },
-  ["published-posts"],
-  { tags: [CACHE_TAGS.blog], revalidate: 60 },
-);
+export async function getPublishedPosts() {
+  try {
+    return await prisma.blogPost.findMany({
+      where: { status: "PUBLISHED" },
+      orderBy: [{ publishedAt: "desc" }, { createdAt: "desc" }],
+      select: {
+        id: true,
+        title: true,
+        slug: true,
+        excerpt: true,
+        coverImage: true,
+        coverAlt: true,
+        publishedAt: true,
+        updatedAt: true,
+      },
+    });
+  } catch {
+    return [];
+  }
+}
 
-export const getPublishedPostBySlug = unstable_cache(
-  async (slug: string) => {
-    try {
-      return await prisma.blogPost.findFirst({
-        where: { slug, status: "PUBLISHED" },
-        include: {
-          author: { select: { name: true } },
-        },
-      });
-    } catch {
-      return null;
-    }
-  },
-  ["published-post-by-slug"],
-  { tags: [CACHE_TAGS.blog], revalidate: 60 },
-);
+export async function getPublishedPostBySlug(slug: string) {
+  try {
+    return await prisma.blogPost.findFirst({
+      where: { slug, status: "PUBLISHED" },
+      include: {
+        author: { select: { name: true } },
+      },
+    });
+  } catch {
+    return null;
+  }
+}
 
 export async function listPostsAdmin(filters?: {
   status?: PostStatus | "ALL";

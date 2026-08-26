@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath, updateTag } from "next/cache";
 import { prisma } from "@/lib/db";
 import { requireApiSession } from "@/lib/auth/session";
 import { CACHE_TAGS } from "@/lib/constants";
@@ -16,7 +16,7 @@ function prepareContent(content: string) {
 }
 
 function revalidateBlog(slug?: string) {
-  revalidateTag(CACHE_TAGS.blog, "max");
+  updateTag(CACHE_TAGS.blog);
   revalidatePath("/blog");
   revalidatePath("/admingermanika/blog");
   revalidatePath("/admingermanika/dashboard");

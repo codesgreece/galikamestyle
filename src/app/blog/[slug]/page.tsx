@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPublishedPostBySlug, getPublishedPosts } from "@/services/blog";
+import { getPublishedPostBySlug } from "@/services/blog";
 import { renderBlogContent } from "@/lib/sanitize";
 import { siteConfig } from "@/lib/config";
+
+export const dynamic = "force-dynamic";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -29,11 +31,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: post.coverImage ? [{ url: post.coverImage }] : undefined,
     },
   };
-}
-
-export async function generateStaticParams() {
-  const posts = await getPublishedPosts();
-  return posts.map((post) => ({ slug: post.slug }));
 }
 
 export default async function BlogPostPage({ params }: Props) {

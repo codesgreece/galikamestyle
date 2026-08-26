@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getPublishedPosts } from "@/services/blog";
 import { siteConfig } from "@/lib/config";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Blog | Γερμανικά με Στυλ",
   description:
