@@ -20,14 +20,17 @@ import { FitQuiz } from "@/components/sections/FitQuiz";
 import { Contact } from "@/components/sections/Contact";
 import { EndSurprise } from "@/components/sections/EndSurprise";
 import { Social } from "@/components/sections/Social";
+import { BlogPreview, type HomeBlogPost } from "@/components/sections/BlogPreview";
 import type { PublicOffer, SiteContentMap } from "@/lib/defaults";
 
 export function HomeClient({
   offers,
   content,
+  posts,
 }: {
   offers: PublicOffer[];
   content: SiteContentMap;
+  posts: HomeBlogPost[];
 }) {
   const [kind, setKind] = useState<"full" | "short" | "skip" | "pending">(
     "pending",
@@ -73,6 +76,7 @@ export function HomeClient({
           <About />
           <ExamPrep />
           <Pricing offers={offers} />
+          <BlogPreview posts={posts} />
           <Contact content={content} />
           <EndSurprise />
           <Social content={content} />

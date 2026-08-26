@@ -17,6 +17,7 @@ function prepareContent(content: string) {
 
 function revalidateBlog(slug?: string) {
   updateTag(CACHE_TAGS.blog);
+  revalidatePath("/");
   revalidatePath("/blog");
   revalidatePath("/admingermanika/blog");
   revalidatePath("/admingermanika/dashboard");
