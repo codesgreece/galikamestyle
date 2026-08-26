@@ -48,12 +48,12 @@ export const FIELD_WORDS: FieldWord[] = [
 export const RING_RADIUS = [22, 32, 44] as const;
 
 export const TIMING = {
-  wordMs: 250,
-  multiplyMs: 460,
-  vortexMs: 700,
+  wordMs: 300,
+  multiplyMs: 520,
+  vortexMs: 680,
   stillMs: 200,
-  brandMs: 420,
-  enterMs: 420,
+  brandMs: 400,
+  enterMs: 400,
   holdCapMs: 1200,
   shortHalloMs: 150,
   shortHelloMs: 150,

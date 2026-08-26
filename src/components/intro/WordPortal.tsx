@@ -61,6 +61,7 @@ export function WordPortal({
     enteredRef.current = true;
     px.set(0);
     py.set(0);
+    window.scrollTo(0, 0);
     onEnterRef.current();
   }, [px, py]);
 
@@ -72,6 +73,7 @@ export function WordPortal({
     } catch {
       /* private mode */
     }
+    window.scrollTo(0, 0);
     onCompleteRef.current();
     setPhase("done");
   }, []);
@@ -118,8 +120,23 @@ export function WordPortal({
   useEffect(() => {
     const root = document.documentElement;
     if (phase === "done" || mode === "skip") return;
+    const prev = history.scrollRestoration;
+    try {
+      history.scrollRestoration = "manual";
+    } catch {
+      /* older browsers */
+    }
+    window.scrollTo(0, 0);
     root.classList.add("portal-lock");
-    return () => root.classList.remove("portal-lock");
+    return () => {
+      root.classList.remove("portal-lock");
+      window.scrollTo(0, 0);
+      try {
+        history.scrollRestoration = prev;
+      } catch {
+        /* older browsers */
+      }
+    };
   }, [mode, phase]);
 
   useEffect(() => {
