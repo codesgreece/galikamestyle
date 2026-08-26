@@ -38,7 +38,13 @@ const wordPicks = [
 
 const stylColors = ["#ffe14a", "#ff5d7a", "#3d8bff", "#2fd67b", "#b48cff"];
 
-export function Hero() {
+export function Hero({
+  reveal = true,
+  cinematic = false,
+}: {
+  reveal?: boolean;
+  cinematic?: boolean;
+}) {
   const [stylClicks, setStylClicks] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
   const [mood, setMood] = useState<(typeof wordPicks)[number]["bg"] | null>(null);
@@ -130,14 +136,63 @@ export function Hero() {
 
       <div className="container-shell relative z-10 flex min-h-[100svh] flex-col justify-start gap-8 pb-16 pt-[7.75rem] md:min-h-0 md:grid md:grid-cols-[1.15fr_0.85fr] md:items-center md:gap-8 md:py-8 md:pt-20 lg:gap-10 lg:py-10 lg:pt-20">
         <div className="flex flex-col gap-6 md:gap-4">
-        <p className="inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs">
+        <motion.p
+          className="hero-from-portal inline-flex w-fit items-center gap-2 rounded-full border-2 border-cream/20 bg-cream/10 px-3.5 py-1.5 text-[0.68rem] font-bold uppercase tracking-[0.2em] text-yellow sm:text-xs"
+          initial={false}
+          animate={
+            cinematic && !reveal ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }
+          }
+          transition={{
+            duration: cinematic ? 0.4 : 0,
+            delay: cinematic && reveal ? 0.2 : 0,
+          }}
+        >
           Γερμανικά με Στυλ
-        </p>
+        </motion.p>
 
         <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal md:text-[clamp(1.9rem,2.6vw,2.4rem)]">
-          <span className="mb-3.5 block md:mb-1">Μάθε Γερμανικά.</span>
-          <span className="mb-6 block md:mb-1">Μάθε Αγγλικά.</span>
-          <span className="block">
+          <motion.span
+            className="hero-from-portal mb-3.5 block md:mb-1"
+            initial={false}
+            animate={
+              cinematic && !reveal
+                ? { opacity: 0, scale: 2.85, y: 28 }
+                : { opacity: 1, scale: 1, y: 0 }
+            }
+            transition={{ duration: cinematic ? 0.72 : 0, ease: [0.16, 1, 0.3, 1] }}
+          >
+            Μάθε Γερμανικά.
+          </motion.span>
+          <motion.span
+            className="hero-from-portal mb-6 block md:mb-1"
+            initial={false}
+            animate={
+              cinematic && !reveal
+                ? { opacity: 0, y: 18 }
+                : { opacity: 1, y: 0 }
+            }
+            transition={{
+              duration: cinematic ? 0.55 : 0,
+              delay: cinematic && reveal ? 0.08 : 0,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            Μάθε Αγγλικά.
+          </motion.span>
+          <motion.span
+            className="hero-from-portal block"
+            initial={false}
+            animate={
+              cinematic && !reveal
+                ? { opacity: 0, y: 18 }
+                : { opacity: 1, y: 0 }
+            }
+            transition={{
+              duration: cinematic ? 0.55 : 0,
+              delay: cinematic && reveal ? 0.16 : 0,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
             Και κάν’ το με{" "}
             <button
               type="button"
@@ -160,15 +215,35 @@ export function Hero() {
               <span className="absolute -bottom-1 left-0 h-2 w-full rounded-full bg-yellow/80" />
             </button>
             .
-          </span>
+          </motion.span>
         </h1>
 
-        <p className="max-w-xl text-[1.05rem] leading-8 text-cream/80 md:text-base md:leading-7">
+        <motion.p
+          className="hero-from-portal max-w-xl text-[1.05rem] leading-8 text-cream/80 md:text-base md:leading-7"
+          initial={false}
+          animate={
+            cinematic && !reveal ? { opacity: 0, y: 14 } : { opacity: 1, y: 0 }
+          }
+          transition={{
+            duration: cinematic ? 0.45 : 0,
+            delay: cinematic && reveal ? 0.24 : 0,
+          }}
+        >
           Εδώ δεν θα βαρεθείς να μάθεις γλώσσες. Μαθήματα για παιδιά από 10+ και
           εφήβους — με πραγματική πρόοδο και λίγο χιούμορ.
-        </p>
+        </motion.p>
 
-        <div className="flex flex-col gap-4 sm:flex-row sm:gap-4">
+        <motion.div
+          className="hero-from-portal flex flex-col gap-4 sm:flex-row sm:gap-4"
+          initial={false}
+          animate={
+            cinematic && !reveal ? { opacity: 0, y: 14 } : { opacity: 1, y: 0 }
+          }
+          transition={{
+            duration: cinematic ? 0.45 : 0,
+            delay: cinematic && reveal ? 0.3 : 0,
+          }}
+        >
           <Button
             variant="coral"
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
@@ -183,10 +258,20 @@ export function Hero() {
           >
             Ποιο είναι το δικό σου στυλ;
           </Button>
-        </div>
+        </motion.div>
         </div>
 
-        <div className="max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] md:max-w-none md:p-5">
+        <motion.div
+          className="hero-from-portal max-w-lg rounded-[1.75rem] border-[3px] border-ink bg-cream p-5 text-ink shadow-[8px_8px_0_#1a1433] md:max-w-none md:p-5"
+          initial={false}
+          animate={
+            cinematic && !reveal ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }
+          }
+          transition={{
+            duration: cinematic ? 0.5 : 0,
+            delay: cinematic && reveal ? 0.34 : 0,
+          }}
+        >
           <p className="text-[0.7rem] font-extrabold uppercase tracking-[0.18em] text-muted">
             Διάλεξε μια λέξη
           </p>
@@ -206,7 +291,7 @@ export function Hero() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { ContactProvider } from "@/components/providers/ContactProvider";
 import { JourneyProvider } from "@/components/providers/JourneyProvider";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
+import { WordPortal } from "@/components/intro/WordPortal";
 import { Hero } from "@/components/sections/Hero";
 import { GoalJourney } from "@/components/sections/GoalJourney";
 import { LanguageSelect } from "@/components/sections/LanguageSelect";
@@ -20,9 +22,20 @@ import { EndSurprise } from "@/components/sections/EndSurprise";
 import { Social } from "@/components/sections/Social";
 
 export default function HomePage() {
+  const [kind, setKind] = useState<"full" | "short" | "skip" | "pending">(
+    "pending",
+  );
+  const [reveal, setReveal] = useState(false);
+  const cinematic = kind === "full" || kind === "pending";
+
   return (
     <JourneyProvider>
       <ContactProvider>
+        <WordPortal
+          onKind={setKind}
+          onEnter={() => setReveal(true)}
+          onComplete={() => setReveal(true)}
+        />
         <a
           href="#main"
           className="focus-ring sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:bg-yellow focus:px-4 focus:py-2 focus:text-ink"
@@ -31,7 +44,7 @@ export default function HomePage() {
         </a>
         <Navigation />
         <main id="main">
-          <Hero />
+          <Hero reveal={reveal} cinematic={cinematic} />
           <GoalJourney />
           <LanguageSelect />
           <div className="desktop-pair">

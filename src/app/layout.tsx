@@ -54,7 +54,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="el" className={`${manrope.variable} ${comfortaa.variable}`}>
-      <body className="min-h-screen bg-cream text-ink antialiased">{children}</body>
+      <body className="min-h-screen bg-cream text-ink antialiased">
+        <noscript>
+          <style>{`.word-portal{display:none!important}.hero-from-portal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }

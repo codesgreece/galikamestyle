@@ -298,6 +298,73 @@ select {
   }
 }
 
+@keyframes portal-spin-a {
+  from {
+    transform: translateZ(-28px) rotate(0deg);
+  }
+  to {
+    transform: translateZ(-28px) rotate(360deg);
+  }
+}
+
+@keyframes portal-spin-b {
+  from {
+    transform: translateZ(-72px) rotate(0deg);
+  }
+  to {
+    transform: translateZ(-72px) rotate(-360deg);
+  }
+}
+
+@keyframes portal-spin-c {
+  from {
+    transform: translateZ(-120px) rotate(0deg);
+  }
+  to {
+    transform: translateZ(-120px) rotate(360deg);
+  }
+}
+
+.portal-spin-a,
+.portal-spin-b,
+.portal-spin-c {
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+.portal-spin-a {
+  animation: portal-spin-a 9s linear infinite;
+}
+
+.portal-spin-b {
+  animation: portal-spin-b 14s linear infinite;
+}
+
+.portal-spin-c {
+  animation: portal-spin-c 19s linear infinite;
+}
+
+.portal-spin-fast.portal-spin-a {
+  animation-duration: 0.7s;
+}
+
+.portal-spin-fast.portal-spin-b {
+  animation-duration: 0.95s;
+}
+
+.portal-spin-fast.portal-spin-c {
+  animation-duration: 1.2s;
+}
+
+.portal-spin-paused {
+  animation-play-state: paused !important;
+}
+
+html.portal-lock,
+html.portal-lock body {
+  overflow: hidden !important;
+}
+
 @keyframes pop-in {
   0% {
     transform: scale(0.7);
