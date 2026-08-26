@@ -1,0 +1,177 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AdminRole {
+  OWNER
+  ADMIN
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+}
+
+enum ActivityAction {
+  LOGIN
+  LOGOUT
+  OFFER_CREATED
+  OFFER_UPDATED
+  OFFER_DELETED
+  POST_CREATED
+  POST_UPDATED
+  POST_PUBLISHED
+  POST_DELETED
+  CONTENT_UPDATED
+  MEDIA_UPLOADED
+  MEDIA_UPDATED
+  MEDIA_DELETED
+  SETTINGS_UPDATED
+  PASSWORD_CHANGED
+}
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  name         String
+  role         AdminRole @default(OWNER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  lastLoginAt  DateTime?
+
+  sessions    Session[]
+  posts       BlogPost[]
+  media       MediaAsset[]
+  activities  ActivityLog[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model Offer {
+  id            String    @id @default(cuid())
+  title         String
+  description   String
+  originalPrice Decimal   @db.Decimal(10, 2)
+  currentPrice  Decimal   @db.Decimal(10, 2)
+  billingPeriod String
+  isActive      Boolean   @default(true)
+  badgeText     String?
+  startDate     DateTime?
+  endDate       DateTime?
+  sortOrder     Int       @default(0)
+  accent        String    @default("navy")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([isActive, sortOrder])
+}
+
+model SiteContent {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  group     String
+  label     String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+
+  @@index([group])
+}
+
+model BlogPost {
+  id          String     @id @default(cuid())
+  title       String
+  slug        String     @unique
+  excerpt     String     @default("")
+  content     String     @default("")
+  coverImage  String?
+  coverAlt    String?
+  status      PostStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  authorId    String
+
+  author AdminUser @relation(fields: [authorId], references: [id], onDelete: Restrict)
+
+  @@index([status, publishedAt])
+  @@index([authorId])
+}
+
+model MediaAsset {
+  id           String   @id @default(cuid())
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+  storagePath  String
+  storageKey   String   @unique
+  altText      String?
+  createdAt    DateTime @default(now())
+  uploadedById String?
+
+  uploadedBy AdminUser?  @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  blob       MediaBlob?
+
+  @@index([createdAt])
+}
+
+model MediaBlob {
+  id      String @id @default(cuid())
+  mediaId String @unique
+  data    Bytes
+
+  media MediaAsset @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+}
+
+model PageView {
+  id              String   @id @default(cuid())
+  path            String
+  visitorHash     String
+  referrerCategory String  @default("direct")
+  deviceType      String   @default("unknown")
+  createdAt       DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([path, createdAt])
+  @@index([visitorHash, createdAt])
+}
+
+model ActivityLog {
+  id        String         @id @default(cuid())
+  userId    String?
+  action    ActivityAction
+  summary   String
+  meta      Json?
+  createdAt DateTime       @default(now())
+
+  user AdminUser? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([createdAt])
+  @@index([userId, createdAt])
+}
+
+model LoginAttempt {
+  id        String   @id @default(cuid())
+  key       String
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+}

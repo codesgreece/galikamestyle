@@ -6,43 +6,43 @@ import { Reveal, DropWords } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { useContactModal } from "@/components/providers/ContactProvider";
 import { useJourney } from "@/components/providers/JourneyProvider";
-import { siteConfig } from "@/lib/config";
 import { goalLabels } from "@/data/goals";
+import { DEFAULT_CONTENT, type SiteContentMap } from "@/lib/defaults";
 
-const contacts = [
-  {
-    label: "Κάλεσε",
-    value: siteConfig.phone.display,
-    href: siteConfig.phone.href,
-    icon: Phone,
-    tone: "bg-yellow",
-  },
-  {
-    label: "WhatsApp",
-    value: siteConfig.whatsapp.display,
-    href: siteConfig.whatsapp.href,
-    icon: MessageCircle,
-    tone: "bg-green",
-  },
-  {
-    label: "Viber",
-    value: siteConfig.viber.display,
-    href: siteConfig.viber.href,
-    icon: Smartphone,
-    tone: "bg-lilac",
-  },
-  {
-    label: "Email",
-    value: siteConfig.email.display,
-    href: siteConfig.email.href,
-    icon: Mail,
-    tone: "bg-blue text-paper",
-  },
-];
-
-export function Contact() {
+export function Contact({ content = DEFAULT_CONTENT }: { content?: SiteContentMap }) {
   const { openContact } = useContactModal();
   const journey = useJourney();
+
+  const contacts = [
+    {
+      label: "Κάλεσε",
+      value: content["contact.phone_display"],
+      href: content["contact.phone_href"],
+      icon: Phone,
+      tone: "bg-yellow",
+    },
+    {
+      label: "WhatsApp",
+      value: content["contact.whatsapp_display"],
+      href: content["contact.whatsapp_href"],
+      icon: MessageCircle,
+      tone: "bg-green",
+    },
+    {
+      label: "Viber",
+      value: content["contact.viber_display"],
+      href: content["contact.viber_href"],
+      icon: Smartphone,
+      tone: "bg-lilac",
+    },
+    {
+      label: "Email",
+      value: content["contact.email_display"],
+      href: content["contact.email_href"],
+      icon: Mail,
+      tone: "bg-blue text-paper",
+    },
+  ];
 
   return (
     <section id="contact" className="relative overflow-hidden bg-navy text-cream">
@@ -50,16 +50,16 @@ export function Contact() {
       <div className="container-shell section-pad relative z-10">
         <Reveal>
           <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-yellow">
-            Πάμε να γνωριστούμε
+            {content["contact.section_eyebrow"]}
           </p>
         </Reveal>
         <h2 className="section-title font-display max-w-3xl">
-          <DropWords text="Έτοιμος για το πρώτο σου “Hallo”;" />{" "}
+          <DropWords text={content["contact.section_title"]} />{" "}
           <span>👋</span>
         </h2>
         <Reveal delay={0.1}>
           <p className="mt-3 max-w-xl text-lg text-cream/70 sm:mt-4">
-            Η Βιργινία είναι ένα μήνυμα μακριά. Κυριολεκτικά.
+            {content["contact.section_subtitle"]}
           </p>
         </Reveal>
 
@@ -102,7 +102,7 @@ export function Contact() {
               })
             }
           >
-            Επικοινώνησε σήμερα →
+            {content["contact.cta"]}
           </Button>
         </Reveal>
 

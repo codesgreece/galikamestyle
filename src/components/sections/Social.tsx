@@ -4,14 +4,17 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { FacebookIcon } from "@/components/ui/FacebookIcon";
 import { siteConfig } from "@/lib/config";
+import { DEFAULT_CONTENT, type SiteContentMap } from "@/lib/defaults";
 
-export function Social() {
+export function Social({ content = DEFAULT_CONTENT }: { content?: SiteContentMap }) {
+  const facebookHref = content["contact.facebook_href"] || siteConfig.facebook.href;
+
   return (
     <section className="border-t-[3px] border-ink bg-paper">
       <div className="container-shell py-10 lg:py-12">
         <Reveal>
           <a
-            href={siteConfig.facebook.href}
+            href={facebookHref}
             target="_blank"
             rel="noopener noreferrer"
             className="focus-ring group flex flex-col items-start justify-between gap-5 rounded-3xl border-[3px] border-ink bg-cream px-6 py-7 shadow-[8px_8px_0_#3d8bff] transition hover:-translate-y-1 hover:shadow-[10px_10px_0_#ff5d7a] sm:flex-row sm:items-center sm:px-8"

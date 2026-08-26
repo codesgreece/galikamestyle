@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Comfortaa, Manrope } from "next/font/google";
 import { siteConfig } from "@/lib/config";
+import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -59,6 +60,7 @@ export default function RootLayout({
           <style>{`.word-portal{display:none!important}.hero-from-portal{opacity:1!important;transform:none!important;filter:none!important}`}</style>
         </noscript>
         {children}
+        <PageViewTracker />
       </body>
     </html>
   );

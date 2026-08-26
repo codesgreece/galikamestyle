@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  --admin-bg: #f3f1ec;
+  --admin-surface: #fffcf7;
+  --admin-ink: #1c2430;
+  --admin-muted: #5f6b7a;
+  --admin-line: rgba(28, 36, 48, 0.1);
+  --admin-accent: #c45c3e;
+  --admin-accent-soft: #f4e4de;
+  --admin-navy: #1a2744;
+  --admin-success: #1f7a4c;
+  --admin-danger: #b42318;
+  --admin-warning: #9a6700;
+  --admin-shadow: 0 10px 30px rgba(26, 39, 68, 0.06);
+  --font-admin-sans: var(--font-admin-sans), "Segoe UI", sans-serif;
+  --font-admin-display: var(--font-admin-display), Georgia, serif;
+}
+
+.admin-root {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(196, 92, 62, 0.08), transparent 35%),
+    radial-gradient(circle at 100% 0%, rgba(26, 39, 68, 0.08), transparent 30%),
+    var(--admin-bg);
+  color: var(--admin-ink);
+  font-family: var(--font-admin-sans);
+}
+
+.admin-display {
+  font-family: var(--font-admin-display);
+  letter-spacing: -0.02em;
+}
+
+.admin-card {
+  background: var(--admin-surface);
+  border: 1px solid var(--admin-line);
+  border-radius: 1.1rem;
+  box-shadow: var(--admin-shadow);
+}
+
+.admin-input {
+  width: 100%;
+  border-radius: 0.8rem;
+  border: 1px solid var(--admin-line);
+  background: #fff;
+  padding: 0.75rem 0.9rem;
+  color: var(--admin-ink);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.admin-input:focus {
+  border-color: rgba(196, 92, 62, 0.55);
+  box-shadow: 0 0 0 3px rgba(196, 92, 62, 0.15);
+}
+
+.admin-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+}
+
+.admin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  border-radius: 0.8rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.92rem;
+  font-weight: 650;
+  transition: transform 0.12s ease, opacity 0.12s ease, background 0.12s ease;
+}
+
+.admin-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.admin-btn:focus-visible {
+  outline: 2px solid var(--admin-accent);
+  outline-offset: 2px;
+}
+
+.admin-btn-primary {
+  background: var(--admin-navy);
+  color: #fff;
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+  background: #24355a;
+}
+
+.admin-btn-accent {
+  background: var(--admin-accent);
+  color: #fff;
+}
+
+.admin-btn-accent:hover:not(:disabled) {
+  background: #b04f33;
+}
+
+.admin-btn-ghost {
+  background: transparent;
+  border: 1px solid var(--admin-line);
+  color: var(--admin-ink);
+}
+
+.admin-btn-danger {
+  background: #fff;
+  border: 1px solid rgba(180, 35, 24, 0.25);
+  color: var(--admin-danger);
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-badge-success {
+  background: #e8f6ee;
+  color: var(--admin-success);
+}
+
+.admin-badge-muted {
+  background: #eef1f5;
+  color: var(--admin-muted);
+}
+
+.admin-badge-warn {
+  background: #fff4d6;
+  color: var(--admin-warning);
+}
+
+.admin-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 0.85rem;
+  padding: 0.75rem 0.9rem;
+  color: rgba(255, 252, 247, 0.78);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.admin-sidebar-link:hover,
+.admin-sidebar-link[data-active="true"] {
+  background: rgba(255, 252, 247, 0.1);
+  color: #fffcf7;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.85rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--admin-line);
+  vertical-align: middle;
+}
+
+.admin-table th {
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--admin-muted);
+  font-weight: 700;
+}

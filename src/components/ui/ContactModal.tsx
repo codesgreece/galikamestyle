@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { siteConfig } from "@/lib/config";
 import { goalLabels } from "@/data/goals";
 import { useJourney } from "@/components/providers/JourneyProvider";
+import { DEFAULT_CONTENT, type SiteContentMap } from "@/lib/defaults";
 
 type FormState = {
   name: string;
@@ -33,10 +34,12 @@ export function ContactModal({
   open,
   onClose,
   preset,
+  content = DEFAULT_CONTENT,
 }: {
   open: boolean;
   onClose: () => void;
   preset?: Partial<ContactPreset>;
+  content?: SiteContentMap;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -58,6 +61,7 @@ export function ContactModal({
           key={`${preset?.interest}-${preset?.format}-${preset?.estimatedLevel}-${preset?.goal}`}
           onClose={onClose}
           preset={preset}
+          content={content}
         />
       ) : null}
     </AnimatePresence>
@@ -67,9 +71,11 @@ export function ContactModal({
 function ContactModalContent({
   onClose,
   preset,
+  content,
 }: {
   onClose: () => void;
   preset?: Partial<ContactPreset>;
+  content: SiteContentMap;
 }) {
   const titleId = useId();
   const journey = useJourney();
@@ -90,6 +96,7 @@ function ContactModalContent({
       ...form,
       journey: merged,
       source: siteConfig.name,
+      contactEmail: content["contact.email_display"],
     });
     setSubmitted(true);
   };

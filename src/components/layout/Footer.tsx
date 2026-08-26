@@ -1,14 +1,18 @@
 import { FacebookIcon } from "@/components/ui/FacebookIcon";
 import { siteConfig } from "@/lib/config";
+import { DEFAULT_CONTENT, type SiteContentMap } from "@/lib/defaults";
 
 const links = [
   { href: "#hero", label: "Αρχική" },
   { href: "#levels", label: "Επίπεδα" },
   { href: "#pricing", label: "Modes" },
   { href: "#contact", label: "Επικοινωνία" },
+  { href: "/blog", label: "Blog" },
 ];
 
-export function Footer() {
+export function Footer({ content = DEFAULT_CONTENT }: { content?: SiteContentMap }) {
+  const facebookHref = content["contact.facebook_href"] || siteConfig.facebook.href;
+
   return (
     <footer className="border-t-[3px] border-ink bg-navy text-cream">
       <div className="container-shell py-10 lg:py-12">
@@ -19,8 +23,7 @@ export function Footer() {
               <span className="rounded-md bg-yellow px-2 text-ink">με Στυλ</span>
             </p>
             <p className="mt-3 max-w-sm text-sm text-cream/65">
-              Γλώσσες με σύγχρονο τρόπο. Λιγότερο βαρετό διάβασμα, περισσότερο
-              στυλ.
+              {content["general.footer_blurb"]}
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -30,7 +33,7 @@ export function Footer() {
               </a>
             ))}
             <a
-              href={siteConfig.facebook.href}
+              href={facebookHref}
               target="_blank"
               rel="noopener noreferrer"
               className="focus-ring inline-flex items-center gap-2 text-sm text-cream/70 hover:text-yellow"

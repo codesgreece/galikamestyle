@@ -5,6 +5,7 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ToastBubble } from "@/components/ui/PlayfulFX";
 import { scrollToId } from "@/lib/utils";
+import { DEFAULT_CONTENT, type SiteContentMap } from "@/lib/defaults";
 
 const floaters = [
   { text: "Hallo!", x: "6%", y: "18%", color: "bg-yellow" },
@@ -41,9 +42,11 @@ const stylColors = ["#ffe14a", "#ff5d7a", "#3d8bff", "#2fd67b", "#b48cff"];
 export function Hero({
   reveal = true,
   cinematic = false,
+  content = DEFAULT_CONTENT,
 }: {
   reveal?: boolean;
   cinematic?: boolean;
+  content?: SiteContentMap;
 }) {
   const [stylClicks, setStylClicks] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
@@ -147,7 +150,7 @@ export function Hero({
             delay: cinematic && reveal ? 0.2 : 0,
           }}
         >
-          Γερμανικά με Στυλ
+          {content["hero.eyebrow"]}
         </motion.p>
 
         <h1 className="font-display text-[clamp(1.85rem,7vw,4.8rem)] tracking-normal md:text-[clamp(1.9rem,2.6vw,2.4rem)]">
@@ -161,7 +164,7 @@ export function Hero({
             }
             transition={{ duration: cinematic ? 0.72 : 0, ease: [0.16, 1, 0.3, 1] }}
           >
-            Μάθε Γερμανικά.
+            {content["hero.title_line1"]}
           </motion.span>
           <motion.span
             className="hero-from-portal mb-6 block md:mb-1"
@@ -177,7 +180,7 @@ export function Hero({
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            Μάθε Αγγλικά.
+            {content["hero.title_line2"]}
           </motion.span>
           <motion.span
             className="hero-from-portal block"
@@ -193,7 +196,7 @@ export function Hero({
               ease: [0.16, 1, 0.3, 1],
             }}
           >
-            Και κάν’ το με{" "}
+            {content["hero.title_line3_prefix"]}{" "}
             <button
               type="button"
               onClick={onStylClick}
@@ -229,8 +232,7 @@ export function Hero({
             delay: cinematic && reveal ? 0.24 : 0,
           }}
         >
-          Εδώ δεν θα βαρεθείς να μάθεις γλώσσες. Μαθήματα για παιδιά από 10+ και
-          εφήβους — με πραγματική πρόοδο και λίγο χιούμορ.
+          {content["hero.subtitle"]}
         </motion.p>
 
         <motion.div
@@ -249,14 +251,14 @@ export function Hero({
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
             onClick={() => scrollToId("goal")}
           >
-            Πάμε να γνωριστούμε →
+            {content["hero.cta_primary"]}
           </Button>
           <Button
             variant="yellow"
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
             onClick={() => scrollToId("level-test")}
           >
-            Ποιο είναι το δικό σου στυλ;
+            {content["hero.cta_secondary"]}
           </Button>
         </motion.div>
         </div>
