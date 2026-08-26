@@ -28,6 +28,10 @@ export function Navigation() {
 
   const go = (href: string) => {
     setOpen(false);
+    if (href.startsWith("/")) {
+      window.location.assign(href);
+      return;
+    }
     requestAnimationFrame(() => scrollToId(href.replace("#", "")));
   };
 
