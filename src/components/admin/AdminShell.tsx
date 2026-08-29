@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import {
   BarChart3,
+  CalendarDays,
+  Clock3,
   FilePenLine,
   Home,
   ImageIcon,
@@ -20,6 +22,8 @@ import { logoutAction } from "@/app/admingermanika/actions/auth";
 
 const icons = {
   home: Home,
+  calendar: CalendarDays,
+  clock: Clock3,
   tag: Tag,
   pen: FilePenLine,
   edit: Pencil,

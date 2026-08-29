@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireSession } from "@/lib/auth/session";
 import { getAnalyticsSummary } from "@/services/analytics";
+import { getBookingStats } from "@/services/booking";
 import { EmptyState, PageHeader, StatCard } from "@/components/admin/ui";
 
 export const metadata = { title: "Στατιστικά" };
@@ -16,10 +17,15 @@ export default async function AnalyticsPage({
   const rangeDays = [7, 30, 90].includes(range) ? range : 30;
 
   let data: Awaited<ReturnType<typeof getAnalyticsSummary>> | null = null;
+  let bookingStats: Awaited<ReturnType<typeof getBookingStats>> | null = null;
   try {
-    data = await getAnalyticsSummary(rangeDays);
+    [data, bookingStats] = await Promise.all([
+      getAnalyticsSummary(rangeDays),
+      getBookingStats(),
+    ]);
   } catch {
     data = null;
+    bookingStats = null;
   }
 
   if (!data) {
@@ -61,6 +67,21 @@ export default async function AnalyticsPage({
         <StatCard label="30 ημέρες" value={data.last30Count} />
         <StatCard label="Συνολικά" value={data.total} />
       </div>
+
+      {bookingStats ? (
+        <>
+          <h2 className="admin-display mb-3 mt-8 text-xl">Booking Analytics</h2>
+          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <StatCard label="Booking requests (σήμερα)" value={bookingStats.totalStarts} />
+            <StatCard label="Confirmed (σήμερα)" value={bookingStats.confirmedToday} />
+            <StatCard label="Conversion rate" value={`${bookingStats.conversionRate}%`} />
+            <StatCard label="Cancelled" value={bookingStats.cancelled} />
+            <StatCard label="Expired holds" value={bookingStats.expired} />
+            <StatCard label="Pending holds" value={bookingStats.pending} />
+            <StatCard label="Total confirmed" value={bookingStats.confirmed} />
+          </div>
+        </>
+      ) : null}
 
       <section className="admin-card mt-6 p-5">
         <h2 className="admin-display text-2xl">Επισκέψεις ανά ημέρα</h2>

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { useJourney } from "@/components/providers/JourneyProvider";
 import { useContactModal } from "@/components/providers/ContactProvider";
 import { battleRounds, type BattleSide } from "@/data/battle";
+import { unlockAchievement } from "@/data/achievements";
 import { cn } from "@/lib/utils";
 
 export function LanguageBattle() {
@@ -53,6 +54,7 @@ export function LanguageBattle() {
             : "english";
       setFinalWinner(winner);
       setBattleResult(winner);
+      unlockAchievement("battle-veteran");
       setFinished(true);
       return;
     }

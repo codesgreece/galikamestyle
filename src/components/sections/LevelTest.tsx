@@ -12,6 +12,7 @@ import {
   type LevelQuestion,
 } from "@/data/level-test";
 import { scrollToId, cn } from "@/lib/utils";
+import { unlockAchievement } from "@/data/achievements";
 import type { LanguageChoice } from "@/lib/types";
 
 type Phase = "intro" | "quiz" | "result";
@@ -58,6 +59,8 @@ export function LevelTest() {
         const finalBand = resolveLevelBand(nextCorrect);
         setCorrect(nextCorrect);
         setLevelResult(finalBand.id, nextCorrect);
+        unlockAchievement("language-explorer");
+        if (finalBand.id === "C1") unlockAchievement("c1-territory");
         setPhase("result");
         setFeedback(null);
         setLocked(false);

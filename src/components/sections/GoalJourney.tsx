@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { useJourney } from "@/components/providers/JourneyProvider";
 import { goalOptions } from "@/data/goals";
 import { scrollToId, cn } from "@/lib/utils";
+import { unlockAchievement } from "@/data/achievements";
 import type { LearningGoal } from "@/lib/types";
 
 export function GoalJourney() {
@@ -18,6 +19,7 @@ export function GoalJourney() {
   const choose = (id: LearningGoal) => {
     setPicked(id);
     setGoal(id);
+    unlockAchievement("first-hallo");
   };
 
   return (

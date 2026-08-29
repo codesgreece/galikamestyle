@@ -10,17 +10,20 @@ import { Hero } from "@/components/sections/Hero";
 import { GoalJourney } from "@/components/sections/GoalJourney";
 import { LanguageSelect } from "@/components/sections/LanguageSelect";
 import { LevelTest } from "@/components/sections/LevelTest";
-import { Levels } from "@/components/sections/Levels";
-import { MiniGame } from "@/components/sections/MiniGame";
+import { LanguageJourney } from "@/components/sections/LanguageJourney";
 import { LanguageBattle } from "@/components/sections/LanguageBattle";
-import { About } from "@/components/sections/About";
+import { DailyChallenge } from "@/components/sections/DailyChallenge";
+import { RandomWordMachine } from "@/components/sections/RandomWordMachine";
 import { ExamPrep } from "@/components/sections/ExamPrep";
 import { Pricing } from "@/components/sections/Pricing";
-import { FitQuiz } from "@/components/sections/FitQuiz";
+import { PersonalityQuiz } from "@/components/sections/PersonalityQuiz";
+import { BookingFlow } from "@/components/sections/BookingFlow";
+import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { EndSurprise } from "@/components/sections/EndSurprise";
 import { Social } from "@/components/sections/Social";
 import { BlogPreview, type HomeBlogPost } from "@/components/sections/BlogPreview";
+import { AchievementsPanel } from "@/components/sections/AchievementsPanel";
 import type { PublicOffer, SiteContentMap } from "@/lib/defaults";
 
 export function HomeClient({
@@ -64,18 +67,17 @@ export function HomeClient({
           <Hero reveal={reveal} cinematic={cinematic} content={content} />
           <GoalJourney />
           <LanguageSelect />
-          <div className="desktop-pair">
-            <LevelTest />
-            <MiniGame />
-          </div>
-          <Levels />
-          <div className="desktop-pair">
-            <LanguageBattle />
-            <FitQuiz />
-          </div>
-          <About />
+          <LevelTest />
+          <LanguageJourney />
+          <LanguageBattle />
+          <DailyChallenge />
+          <RandomWordMachine />
           <ExamPrep />
           <Pricing offers={offers} />
+          <BookingFlow />
+          <PersonalityQuiz />
+          <AchievementsPanel />
+          <About />
           <BlogPreview posts={posts} />
           <Contact content={content} />
           <EndSurprise />

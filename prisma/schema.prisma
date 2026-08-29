@@ -33,6 +33,32 @@ enum ActivityAction {
   MEDIA_DELETED
   SETTINGS_UPDATED
   PASSWORD_CHANGED
+  BOOKING_CONFIRMED
+  BOOKING_CANCELLED
+  BOOKING_RESCHEDULED
+  BOOKING_NOTE_ADDED
+  AVAILABILITY_CREATED
+  AVAILABILITY_UPDATED
+  AVAILABILITY_DELETED
+  BLOCKED_DATE_CREATED
+  BLOCKED_DATE_DELETED
+}
+
+enum BookingStatus {
+  PENDING_HOLD
+  CONFIRMED
+  CANCELLED
+  EXPIRED
+}
+
+enum BookingLanguage {
+  GERMAN
+  ENGLISH
+}
+
+enum LessonType {
+  PRIVATE
+  GROUP
 }
 
 model AdminUser {
@@ -174,4 +200,89 @@ model LoginAttempt {
   createdAt DateTime @default(now())
 
   @@index([key, createdAt])
+}
+
+model AvailabilitySchedule {
+  id        String   @id @default(cuid())
+  name      String   @default("Default")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  rules AvailabilityRule[]
+
+  @@index([isActive])
+}
+
+model AvailabilityRule {
+  id         String @id @default(cuid())
+  scheduleId String
+  dayOfWeek  Int
+  startTime  String
+  endTime    String
+
+  schedule AvailabilitySchedule @relation(fields: [scheduleId], references: [id], onDelete: Cascade)
+
+  @@index([scheduleId, dayOfWeek])
+}
+
+model BlockedDate {
+  id        String   @id @default(cuid())
+  date      DateTime @db.Date
+  reason    String?
+  createdAt DateTime @default(now())
+
+  @@unique([date])
+}
+
+model Booking {
+  id             String          @id @default(cuid())
+  name           String          @default("")
+  email          String          @default("")
+  phone          String          @default("")
+  language       BookingLanguage
+  lessonType     LessonType
+  ageGroup       String          @default("")
+  estimatedLevel String?
+  goal           String?
+  message        String?
+  date           DateTime        @db.Date
+  startTime      String
+  endTime        String
+  status         BookingStatus   @default(PENDING_HOLD)
+  holdExpiresAt  DateTime?
+  holdToken      String?         @unique
+  adminNote      String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  slotReservation SlotReservation?
+
+  @@index([date, status])
+  @@index([status, holdExpiresAt])
+  @@index([createdAt])
+  @@index([email])
+}
+
+model SlotReservation {
+  id        String    @id @default(cuid())
+  date      DateTime  @db.Date
+  startTime String
+  bookingId String    @unique
+  expiresAt DateTime?
+
+  booking Booking @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+
+  @@unique([date, startTime])
+  @@index([expiresAt])
+}
+
+model BookingEvent {
+  id        String   @id @default(cuid())
+  event     String
+  sessionId String?
+  createdAt DateTime @default(now())
+
+  @@index([event, createdAt])
+  @@index([createdAt])
 }
