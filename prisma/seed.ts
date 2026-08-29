@@ -66,6 +66,27 @@ async function main() {
 
   console.log(`Seeded admin: ${admin.email}`);
   console.log("Seeded default offers and site content.");
+
+  const scheduleCount = await prisma.availabilitySchedule.count();
+  if (scheduleCount === 0) {
+    await prisma.availabilitySchedule.create({
+      data: {
+        name: "Κανονικό πρόγραμμα",
+        isActive: true,
+        rules: {
+          create: [
+            { dayOfWeek: 1, startTime: "16:00", endTime: "20:00" },
+            { dayOfWeek: 2, startTime: "16:00", endTime: "20:00" },
+            { dayOfWeek: 3, startTime: "17:00", endTime: "21:00" },
+            { dayOfWeek: 4, startTime: "16:00", endTime: "20:00" },
+            { dayOfWeek: 5, startTime: "16:00", endTime: "20:00" },
+            { dayOfWeek: 6, startTime: "10:00", endTime: "14:00" },
+          ],
+        },
+      },
+    });
+    console.log("Seeded default availability schedule.");
+  }
 }
 
 main()

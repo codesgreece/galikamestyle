@@ -249,7 +249,7 @@ export function Hero({
           <Button
             variant="coral"
             className="min-h-14 w-full px-6 py-4 text-[0.78rem] sm:w-auto md:min-h-12 md:py-3"
-            onClick={() => scrollToId("goal")}
+            onClick={() => scrollToId("booking")}
           >
             {content["hero.cta_primary"]}
           </Button>

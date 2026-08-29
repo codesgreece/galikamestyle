@@ -44,6 +44,7 @@ export const navLinks = [
   { href: "#level-test", label: "Test" },
   { href: "#battle", label: "Battle" },
   { href: "#pricing", label: "Modes" },
+  { href: "#booking", label: "Κράτηση" },
   { href: "#blog", label: "Blog" },
   { href: "#contact", label: "Πάμε!" },
 ] as const;

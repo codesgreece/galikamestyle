@@ -67,6 +67,41 @@ export const analyticsCollectSchema = z.object({
   deviceType: z.enum(["mobile", "desktop", "tablet", "unknown"]).default("unknown"),
 });
 
+export const bookingHoldSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  startTime: z.string().regex(/^\d{2}:\d{2}$/),
+  language: z.enum(["GERMAN", "ENGLISH"]),
+  lessonType: z.enum(["PRIVATE", "GROUP"]),
+});
+
+export const bookingConfirmSchema = z.object({
+  holdToken: z.string().min(10),
+  name: z.string().trim().min(2).max(120),
+  email: z.string().trim().email(),
+  phone: z.string().trim().min(6).max(30),
+  ageGroup: z.string().trim().min(1).max(60),
+  estimatedLevel: z.string().trim().max(20).optional(),
+  goal: z.string().trim().max(200).optional(),
+  message: z.string().trim().max(2000).optional(),
+});
+
+export const availabilityScheduleSchema = z.object({
+  name: z.string().trim().min(1).max(80),
+  isActive: z.coerce.boolean(),
+  rules: z.array(
+    z.object({
+      dayOfWeek: z.coerce.number().int().min(0).max(6),
+      startTime: z.string().regex(/^\d{2}:\d{2}$/),
+      endTime: z.string().regex(/^\d{2}:\d{2}$/),
+    }),
+  ),
+});
+
+export const blockedDateSchema = z.object({
+  date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  reason: z.string().trim().max(200).optional(),
+});
+
 export type ActionResult<T = undefined> =
   | { ok: true; data?: T; message?: string }
   | { ok: false; error: string; fieldErrors?: Record<string, string[]> };
